@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">iHealth</string>
+
+    <string name="medical_profile">Hồ sơ y tế</string>
+    <string name="schedule_an_appointment">Đặt lịch hẹn</string>
+    <string name="emergency_service">Dịch vụ y tế khẩn cấp</string>
+    <string name="health_wiki">Tra cứu thông tin y tế</string>
+</resources>
