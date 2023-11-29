@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import android.widget.Button
+import android.widget.ImageButton
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,25 +23,25 @@ class MainActivity : ComponentActivity() {
                 ) {
                     setContentView(R.layout.main_menu_layout)
 
-                    val medicalProfileBtn = findViewById<Button>(R.id.medical_profile_btn)
+                    val medicalProfileBtn = findViewById<ImageButton>(R.id.btn_profile)
                     medicalProfileBtn.setOnClickListener {
                         val intent = Intent(this@MainActivity, MedicalProfileActivity::class.java)
                         startActivity(intent)
                     }
 
-                    val pickAppointmentBtn = findViewById<Button>(R.id.pick_appointment_btn)
+                    val pickAppointmentBtn = findViewById<ImageButton>(R.id.btn_schedual)
                     pickAppointmentBtn.setOnClickListener {
                         val intent = Intent(this@MainActivity, PickAppointmentActivity::class.java)
                         startActivity(intent)
                     }
 
-                    val emergencyBtn = findViewById<Button>(R.id.emergency_btn)
+                    val emergencyBtn = findViewById<ImageButton>(R.id.btn_phone)
                     emergencyBtn.setOnClickListener {
                         val intent = Intent(this@MainActivity, EmergencyActivity::class.java)
                         startActivity(intent)
                     }
 
-                    val healthWikiBtn = findViewById<Button>(R.id.wiki_btn)
+                    val healthWikiBtn = findViewById<ImageButton>(R.id.btn_search)
                     healthWikiBtn.setOnClickListener {
                         val intent = Intent(this@MainActivity, HealthWikiActivity::class.java)
                         startActivity(intent)
