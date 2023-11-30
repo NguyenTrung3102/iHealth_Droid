@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/schedule_an_appointment"
+            android:text="Đặt lịch khám"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>

@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/emergency_service"
+            android:text="Gọi dịch vụ y tế khẩn cấp"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
