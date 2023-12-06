@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">iHealth</string>
+
+    <string name="profile">Hồ sơ y tế</string>
+    <string name="appointment">Lịch khám, chữa bệnh</string>
+    <string name="phone">Gọi dịch vụ y tế khẩn cấp</string>
+    <string name="search">Tra cứu thông tin y tế</string>
+    <string name="profile_menu_bar_name">Hồ sơ y tế</string>
+    <string name="appointment_menu_bar_name">Đặt lịch khám</string>
+    <string name="phone_emergency_menu_bar_name">Liên hệ trợ giúp y tế khẩn cấp</string>
+    <string name="search_wiki_menu_bar_name">Trợ lý thông tin y khoa</string>
+    <string name="settings_menu_bar_name">Cài đặt ứng dụng</string>
+    <string name="settings_language_switch">Ngôn ngữ</string>
+</resources>

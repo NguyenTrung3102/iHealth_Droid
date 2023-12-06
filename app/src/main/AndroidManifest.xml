@@ -43,6 +43,11 @@
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.IHealthDroid">
+        </activity>
     </application>
 
 </manifest>

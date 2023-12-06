@@ -11,6 +11,31 @@
         android:scaleType="centerCrop" />
 
     <LinearLayout
+        android:layout_width="392dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5sp"
+        android:layout_marginEnd="5sp">
+
+        <TextView
+            android:id="@+id/app_name_main_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3.0"
+            android:gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btn_settings"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_setting" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -77,11 +102,11 @@
                 android:id="@+id/txt_profile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="20dp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:text="@string/profile" />
+                android:text="@string/profile"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txt_schedual"
@@ -89,8 +114,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:text="@string/appointment" />
+                android:text="@string/appointment"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txt_phone"
@@ -99,19 +124,19 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:singleLine="false"
-                android:textStyle="bold"
-                android:text="@string/phone" />
+                android:text="@string/phone"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txt_search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="20dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:singleLine="false"
-                android:textStyle="bold"
-                android:text="@string/search" />
+                android:text="@string/search"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
