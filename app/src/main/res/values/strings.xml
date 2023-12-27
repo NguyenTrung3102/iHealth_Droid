@@ -18,4 +18,19 @@
     <string name="search_wiki_menu_bar_name">Health Wiki Assistant</string>
     <string name="settings_menu_bar_name">Application Settings</string>
     <string name="settings_language_switch">Language</string>
+    <string name="sign_in_btn_label">Sign in</string>
+    <string name="dont_have_account_text">Don\'t have an account?</string>
+    <string name="sign_up_btn_label">Sign up</string>
+    <string name="username_input_label">Email:</string>
+    <string name="password_input_label">Password:</string>
+    <string name="sign_out_btn_label">Sign out</string>
+    <string name="create_account_btn">Create Account</string>
+    <string name="password_confirm_label">Confirm Password:</string>
+    <string name="toast_pwd_confirm_mismatch">Confirm password mismatch</string>
+    <string name="toast_auth_failed">Authentication failed</string>
+    <string name="toast_empty_field">You must fill in all fields</string>
+    <string name="toast_auth_succeeded">Authentication succeded</string>
+    <string name="generic_cancellation">Cancel</string>
+    <string name="toast_sign_in_failed">Sign in failed</string>
+    <string name="toast_sign_in_succeeded">Sign in succeeded</string>
 </resources>

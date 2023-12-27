@@ -11,4 +11,19 @@
     <string name="search_wiki_menu_bar_name">Trợ lý thông tin y khoa</string>
     <string name="settings_menu_bar_name">Cài đặt ứng dụng</string>
     <string name="settings_language_switch">Ngôn ngữ</string>
+    <string name="sign_in_btn_label">Đăng nhập</string>
+    <string name="dont_have_account_text">Chưa có tài khoản?</string>
+    <string name="sign_up_btn_label">Đăng ký</string>
+    <string name="username_input_label">Email:</string>
+    <string name="password_input_label">Mật khẩu:</string>
+    <string name="sign_out_btn_label">Đăng xuất</string>
+    <string name="create_account_btn">Tạo tài khoản</string>
+    <string name="password_confirm_label">Xác nhận mật khẩu:</string>
+    <string name="toast_pwd_confirm_mismatch">Mật khẩu xác nhận không đúng</string>
+    <string name="toast_auth_failed">Tạo tài khoản thất bại</string>
+    <string name="toast_empty_field">Bạn phải điền hết các dòng</string>
+    <string name="toast_auth_succeeded">Tạo tài khoản thành công</string>
+    <string name="generic_cancellation">Hủy</string>
+    <string name="toast_sign_in_failed">Đăng nhập thất bại</string>
+    <string name="toast_sign_in_succeeded">Đăng nhập thành công</string>
 </resources>

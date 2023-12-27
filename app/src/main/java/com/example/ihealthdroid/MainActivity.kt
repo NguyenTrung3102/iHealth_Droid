@@ -3,7 +3,9 @@ package com.example.ihealthdroid
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -70,6 +72,12 @@ class MainActivity : ComponentActivity() {
                     val settingBtn = findViewById<ImageButton>(R.id.btn_settings)
                     settingBtn.setOnClickListener {
                         val intent = Intent(this@MainActivity, SettingsActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                    val signOutBtn = findViewById<Button>(R.id.sign_out_btn)
+                    signOutBtn.setOnClickListener {
+                        val intent = Intent(this@MainActivity, AccountSignInActivity::class.java)
                         startActivity(intent)
                     }
                 }
