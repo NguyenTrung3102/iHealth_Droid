@@ -1,4 +1,10 @@
 <resources>
+    <string-array name="languages_array">
+        <item>Select Language</item>
+        <item>English</item>
+        <item>Tiếng Việt</item>
+    </string-array>
+
     <string name="app_name">iHealth</string>
 
     <string name="profile">Medical Profile</string>
@@ -10,6 +16,6 @@
     <string name="appointment_menu_bar_name">Pick an Appointment</string>
     <string name="phone_emergency_menu_bar_name">Emergency Medical Service</string>
     <string name="search_wiki_menu_bar_name">Health Wiki Assistant</string>
-    <string name="settings_menu_bar_name">Application Setiings</string>
+    <string name="settings_menu_bar_name">Application Settings</string>
     <string name="settings_language_switch">Language</string>
 </resources>
