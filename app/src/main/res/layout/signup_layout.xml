@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_background"
+    android:background="@drawable/_5100893_13240"
     android:orientation="vertical">
 
     <LinearLayout
@@ -20,14 +20,6 @@
             android:text="@string/app_name"
             android:textSize="48sp"
             android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/setting_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#00000000"
-            android:src="@drawable/settings_icon" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,10 +29,18 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/img_logo"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_background"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -56,6 +56,8 @@
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:paddingBottom="10dp">
 
                     <TextView
@@ -64,6 +66,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/username_input_label"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
                         android:textSize="20sp" />
 
                     <EditText
@@ -81,13 +85,17 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:paddingBottom="10dp">
 
                     <TextView
                         android:id="@+id/pwd_input"
-                        android:layout_width="wrap_content"
+                        android:layout_width="56dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
                         android:text="@string/password_input_label"
                         android:textSize="20sp" />
 
@@ -104,13 +112,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:paddingBottom="30dp">
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp">
 
                     <TextView
                         android:id="@+id/pwd_confirm"
-                        android:layout_width="wrap_content"
+                        android:layout_width="56dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
                         android:paddingBottom="30dp"
                         android:text="@string/password_confirm_label"
                         android:textSize="20sp" />
@@ -141,7 +154,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@color/nav_bar"
+                    android:background="@drawable/rounded_button"
+                    android:textStyle="bold"
                     android:padding="10dp"
                     android:text="@string/create_account_btn"
                     android:textColor="@color/white"
@@ -153,7 +167,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@color/nav_bar"
+                    android:background="@drawable/rounded_button"
+                    android:textStyle="bold"
                     android:text="@string/generic_cancellation"
                     android:textColor="@color/white"
                     android:textSize="20sp" />

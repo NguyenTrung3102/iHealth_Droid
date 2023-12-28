@@ -50,12 +50,6 @@ class AccountCreatingActivity : ComponentActivity() {
                     val updatedContext = context.createConfigurationContext(configuration)
                     setContentView(R.layout.signup_layout)
 
-                    val settingBtn = findViewById<ImageButton>(R.id.setting_btn)
-                    settingBtn.setOnClickListener {
-                        val intent = Intent(this@AccountCreatingActivity, SettingsActivity::class.java)
-                        startActivity(intent)
-                    }
-
                     val userNameField = findViewById<EditText>(R.id.username_input)
                     val passwordInputField = findViewById<EditText>(R.id.password_input)
                     val passwordConfirmField = findViewById<EditText>(R.id.password_confirm)

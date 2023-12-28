@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
             IHealthDroidTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                       modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val updatedContext = context.createConfigurationContext(configuration)
@@ -69,12 +69,6 @@ class MainActivity : ComponentActivity() {
                         startActivity(intent)
                     }
 
-                    val settingBtn = findViewById<ImageButton>(R.id.btn_settings)
-                    settingBtn.setOnClickListener {
-                        val intent = Intent(this@MainActivity, SettingsActivity::class.java)
-                        startActivity(intent)
-                    }
-
                     val signOutBtn = findViewById<Button>(R.id.sign_out_btn)
                     signOutBtn.setOnClickListener {
                         val intent = Intent(this@MainActivity, AccountSignInActivity::class.java)
@@ -84,4 +78,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- rounded_button.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/nav_bar" />
+    <corners android:radius="10dp" /> <!-- Điều chỉnh giá trị này để làm tròn góc -->
+</shape>
