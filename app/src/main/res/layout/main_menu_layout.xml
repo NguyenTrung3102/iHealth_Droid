@@ -20,8 +20,8 @@
             android:layout_weight="3.0"
             android:gravity="center_vertical"
             android:text="@string/app_name"
-            android:textSize="48sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -31,15 +31,69 @@
         android:layout_margin="5dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/img_background1"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:radius="20dp"
-            android:src="@drawable/medical_assistant" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="256dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/medical_assistant"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circular_background"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView" />
+
+                    <Button
+                        android:id="@+id/btn_information"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_weight="1"
+                        android:background="@color/invisible"
+                        android:text="@string/txt_check_infor"
+                        android:textColor="@color/blue"/>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_notifi"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/item_notificoation"/>
+
+                <ImageButton
+                    android:id="@+id/btn_research"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/item_search" />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

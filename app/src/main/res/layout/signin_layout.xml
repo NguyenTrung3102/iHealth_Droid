@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="4.0"
             android:text="@string/app_name"
-            android:textSize="48sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageButton

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="nav_bar">#004aad</color>
     <color name="blue">#152587</color>
+    <color name="invisible">#00FFFFFF</color>
 </resources>
