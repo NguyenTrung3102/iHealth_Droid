@@ -49,6 +49,11 @@
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
+            android:name=".ProfileDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.IHealthDroid">
+        </activity>
+        <activity
             android:name=".AccountSignInActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">

@@ -35,4 +35,5 @@
     <string name="toast_sign_in_succeeded">Sign in succeeded</string>
     <string name="txt_check_infor">Check Information</string>
     <string name="create_profile">Create Profile</string>
+    <string name="profile_detail_menu_name">Profile Detail</string>
 </resources>

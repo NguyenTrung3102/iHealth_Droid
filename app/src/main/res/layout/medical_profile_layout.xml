@@ -67,13 +67,13 @@
                 android:id="@+id/edit_tv_search_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_weight="10"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="10dp"
+                android:layout_weight="10"
                 android:background="@drawable/border_background"
                 android:ems="10"
-                android:hint="Ex: BN0001"
-                android:inputType="text" />
+                android:hint="Enter a phone number"
+                android:inputType="text"
+                android:paddingLeft="10dp" />
 
             <Button
                 android:id="@+id/btn_search_profile"
@@ -87,14 +87,16 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_resufl"
+            android:id="@+id/tv_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:text="Resufl:" />
-        <ListView
+            android:text="Result:" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profile_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

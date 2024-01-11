@@ -120,7 +120,7 @@ class CreateProfileActivity : ComponentActivity() {
                         val userProvince = provinceEditField.text.toString()
                         val userDistrict = districtEditField.text.toString()
 
-                        val docref = db.collection("users").document("$userPhone")
+                        val docref = db.collection("profiles").document("$userPhone")
 
                         docref.get().addOnCompleteListener { task ->
                             if (task.isSuccessful) {
@@ -131,7 +131,7 @@ class CreateProfileActivity : ComponentActivity() {
 
                                         Toast.makeText(
                                             this@CreateProfileActivity,
-                                            "This phone number already used!",
+                                            "This phone number is already used!",
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     } else {
@@ -160,13 +160,13 @@ class CreateProfileActivity : ComponentActivity() {
                                                 "dob" to userDOB,
                                                 "sex" to userSex,
                                                 "phone" to userPhone,
-                                                "citizen ID" to userCID,
+                                                "citizenID" to userCID,
                                                 "province" to userProvince,
                                                 "district" to userDistrict
                                             )
 
                                             // Add a new document with a generated ID
-                                            db.collection("users").document("$userPhone")
+                                            db.collection("profiles").document("$userPhone")
                                                 .set(user)
                                                 .addOnSuccessListener { documentReference ->
                                                     Log.d(ControlsProviderService.TAG, "DocumentSnapshot added with ID: $userPhone")
@@ -181,7 +181,6 @@ class CreateProfileActivity : ComponentActivity() {
                                 Log.d("TAG", "Error: ", task.exception)
                             }
                         }
-
                     }
                 }
             }
