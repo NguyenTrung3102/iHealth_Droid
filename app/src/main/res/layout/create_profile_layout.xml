@@ -179,7 +179,7 @@
             android:text="Province:" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/edit_tv_province"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
@@ -199,7 +199,7 @@
             android:text="Distric:" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/edit_tv_distric"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
