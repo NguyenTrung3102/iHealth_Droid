@@ -27,4 +27,5 @@
     <string name="toast_sign_in_failed">Đăng nhập thất bại</string>
     <string name="toast_sign_in_succeeded">Đăng nhập thành công</string>
     <string name="txt_check_infor">Kiểm tra thông tin</string>
+    <string name="create_profile">Create Profile</string>
 </resources>
