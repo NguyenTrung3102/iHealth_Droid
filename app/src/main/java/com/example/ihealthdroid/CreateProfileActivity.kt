@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import java.util.Locale
 
-class MedicalProfileActivity : ComponentActivity() {
+class CreateProfileActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,17 +39,11 @@ class MedicalProfileActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val updatedContext = context.createConfigurationContext(configuration)
-                    setContentView(R.layout.medical_profile_layout)
+                    setContentView(R.layout.create_profile_layout)
 
-                    val backToMenuBtn = findViewById<ImageButton>(R.id.back_to_menu)
-                    backToMenuBtn.setOnClickListener {
-                        val intent = Intent(this@MedicalProfileActivity, MainActivity::class.java)
-                        startActivity(intent)
-                    }
-
-                    val addProfileButton = findViewById<ImageButton>(R.id.add_new_btn)
-                    addProfileButton.setOnClickListener {
-                        val intent = Intent(this@MedicalProfileActivity, CreateProfileActivity::class.java)
+                    val backToProfileBtn = findViewById<ImageButton>(R.id.back_to_profile)
+                    backToProfileBtn.setOnClickListener {
+                        val intent = Intent(this@CreateProfileActivity, MedicalProfileActivity::class.java)
                         startActivity(intent)
                     }
                 }

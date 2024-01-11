@@ -46,6 +46,54 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/tv_search_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="If you already have a profile, enter the profile number:" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <EditText
+                android:id="@+id/edit_tv_search_profile"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="10"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/border_background"
+                android:ems="10"
+                android:hint="Ex: BN0001"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btn_search_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:text="Search" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_resufl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="Resufl:" />
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

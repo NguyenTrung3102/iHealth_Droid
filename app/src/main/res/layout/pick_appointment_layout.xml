@@ -32,4 +32,48 @@
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select profile:" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <EditText
+                android:id="@+id/edit_tv_select"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="10"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/border_background"
+                android:ems="10"
+                android:hint="Enter your phone number"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btn_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:text="Select" />
+
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
