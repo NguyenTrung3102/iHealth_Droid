@@ -151,7 +151,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter Citizen Identify Card"
+            android:hint="Enter citizen identify card"
             android:inputType="text"
             android:paddingLeft="15dp" />
 
@@ -171,7 +171,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter Ethnic"
+            android:hint="Enter ethnic"
             android:inputType="text"
             android:paddingLeft="15dp" />
 
@@ -191,7 +191,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter Province"
+            android:hint="Enter province"
             android:inputType="text"
             android:paddingLeft="15dp" />
 
@@ -211,7 +211,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter Distric"
+            android:hint="Enter distric"
             android:inputType="text"
             android:paddingLeft="15dp" />
 

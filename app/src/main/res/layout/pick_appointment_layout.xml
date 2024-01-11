@@ -79,28 +79,55 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border1_background"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
 
 
             <TextView
-                android:id="@+id/tv_"
+                android:id="@+id/tv_show_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:text="Name:" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/tv_show_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:text="Date of birth:" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/tv_show_province"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Province:" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_department"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select department:"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <Spinner
+            android:id="@+id/spn_department"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/border_background"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
     </LinearLayout>
 
 </LinearLayout>
