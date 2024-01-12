@@ -29,7 +29,14 @@
     <string name="txt_check_infor">Kiểm tra thông tin</string>
     <string name="create_profile">Tạo hồ sơ</string>
     <string name="profile_detail_menu_name">Chi tiết hồ sơ</string>
-    <string name="date_of_birth">Date of birth:</string>
-    <string name="phone_num">Phone:</string>
-    <string name="province">Province:</string>
+    <string name="date_of_birth">Ngày sinh:</string>
+    <string name="phone_num">SĐT:</string>
+    <string name="province">Tỉnh:</string>
+    <string name="profile_delete_guide">Nếu muốn xóa một hồ sơ cụ thể, nhập số điện thoại vào đây:</string>
+    <string name="profile_delete_btn_label">Xóa</string>
+    <string name="profile_delete_phone_hint">Nhập số điện thoại</string>
+    <string name="toast_phone_number_exist">Số điện thoại này đã được dùng!</string>
+    <string name="toast_profile_created">Hồ sơ đã được tạo thành công</string>
+    <string name="toast_profile_deleted">Hồ sơ đã được xóa!</string>
+    <string name="toast_profile_delete_failed">Không thể xóa hồ sơ!</string>
 </resources>

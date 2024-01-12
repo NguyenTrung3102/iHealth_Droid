@@ -39,4 +39,11 @@
     <string name="date_of_birth">Date of birth:</string>
     <string name="phone_num">Phone:</string>
     <string name="province">Province:</string>
+    <string name="profile_delete_guide">If you want to delete a specific profile, enter the phone number:</string>
+    <string name="profile_delete_btn_label">Delete</string>
+    <string name="profile_delete_phone_hint">Enter a phone number</string>
+    <string name="toast_phone_number_exist">This phone number is already used!</string>
+    <string name="toast_profile_created">Profile created successfully!</string>
+    <string name="toast_profile_deleted">Profile deleted successfully!</string>
+    <string name="toast_profile_delete_failed">Can\'t delete profile!</string>
 </resources>

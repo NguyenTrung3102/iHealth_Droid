@@ -9,8 +9,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -70,6 +73,33 @@ class MedicalProfileActivity : ComponentActivity() {
                     addProfileButton.setOnClickListener {
                         val intent = Intent(this@MedicalProfileActivity, CreateProfileActivity::class.java)
                         startActivity(intent)
+                    }
+
+                    val deleteProfileButton = findViewById<Button>(R.id.btn_delete_profile)
+                    deleteProfileButton.setOnClickListener {
+                        val deleteNumField = findViewById<EditText>(R.id.edit_tv_delete_profile)
+                        val deleteNum = deleteNumField.text.toString()
+
+                        db.collection("profiles").document(deleteNum)
+                            .delete()
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    this@MedicalProfileActivity,
+                                    R.string.toast_profile_deleted,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                // refresh activity
+                                finish();
+                                startActivity(getIntent());
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(
+                                    this@MedicalProfileActivity,
+                                    R.string.toast_profile_delete_failed,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                     }
 
                     recyclerView = findViewById(R.id.profile_list)

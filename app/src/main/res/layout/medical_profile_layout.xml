@@ -50,10 +50,11 @@
             android:id="@+id/tv_search_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:text="If you already have a profile, enter the profile number:" />
+            android:padding="10dp"
+            android:text="@string/profile_delete_guide" />
 
 
         <LinearLayout
@@ -64,25 +65,25 @@
             android:layout_marginRight="20dp">
 
             <EditText
-                android:id="@+id/edit_tv_search_profile"
+                android:id="@+id/edit_tv_delete_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="10"
                 android:background="@drawable/border_background"
                 android:ems="10"
-                android:hint="Enter a phone number"
+                android:hint="@string/profile_delete_phone_hint"
                 android:inputType="text"
                 android:paddingLeft="10dp" />
 
             <Button
-                android:id="@+id/btn_search_profile"
+                android:id="@+id/btn_delete_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_button"
                 android:layout_weight="1"
-                android:textColor="@color/white"
-                android:text="Search" />
+                android:background="@drawable/rounded_button"
+                android:text="@string/profile_delete_btn_label"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

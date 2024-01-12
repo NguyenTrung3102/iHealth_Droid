@@ -131,7 +131,7 @@ class CreateProfileActivity : ComponentActivity() {
 
                                         Toast.makeText(
                                             this@CreateProfileActivity,
-                                            "This phone number is already used!",
+                                            R.string.toast_phone_number_exist,
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     } else {
@@ -149,7 +149,7 @@ class CreateProfileActivity : ComponentActivity() {
                                         {
                                             Toast.makeText(
                                                 this@CreateProfileActivity,
-                                                "There is an empty field!",
+                                                R.string.toast_empty_field,
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                         } else {
@@ -175,6 +175,15 @@ class CreateProfileActivity : ComponentActivity() {
                                                 .addOnFailureListener { e ->
                                                     Log.w(ControlsProviderService.TAG, "Error adding document", e)
                                                 }
+
+                                            Toast.makeText(
+                                                this@CreateProfileActivity,
+                                                R.string.toast_profile_created,
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+
+                                            val intent = Intent(this@CreateProfileActivity, MedicalProfileActivity::class.java)
+                                            startActivity(intent)
                                         }
                                     }
                                 }
