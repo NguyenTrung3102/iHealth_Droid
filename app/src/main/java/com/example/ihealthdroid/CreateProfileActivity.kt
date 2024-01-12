@@ -152,6 +152,35 @@ class CreateProfileActivity : ComponentActivity() {
                                             ).show()
                                         } else {
                                             Log.d("TAG", "Document doesn't exist.")
+
+                                            // Create a new user with info above
+                                            val user = hashMapOf(
+                                                "name" to userName,
+                                                "dob" to userDOB,
+                                                "sex" to userSex,
+                                                "phone" to userPhone,
+                                                "citizenID" to userCID,
+                                                "ethnic" to userEthnic,
+                                                "province" to userProvince,
+                                                "district" to userDistrict
+                                            )
+
+                                            // Add a new document with a generated ID
+                                            db.collection("profiles").document("$userPhone")
+                                                .set(user)
+                                                .addOnSuccessListener {
+                                                    Toast.makeText(
+                                                        this@CreateProfileActivity,
+                                                        R.string.toast_profile_created,
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+
+                                                    val intent = Intent(this@CreateProfileActivity, MedicalProfileActivity::class.java)
+                                                    startActivity(intent)
+                                                }
+                                                .addOnFailureListener { e ->
+                                                    Log.w(ControlsProviderService.TAG, "Error adding document", e)
+                                                }
                                         }
                                     }
                                 } else {
