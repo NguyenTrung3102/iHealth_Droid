@@ -36,4 +36,7 @@
     <string name="txt_check_infor">Check Information</string>
     <string name="create_profile">Create Profile</string>
     <string name="profile_detail_menu_name">Profile Detail</string>
+    <string name="date_of_birth">Date of birth:</string>
+    <string name="phone_num">Phone:</string>
+    <string name="province">Province:</string>
 </resources>

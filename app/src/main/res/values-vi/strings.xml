@@ -29,4 +29,7 @@
     <string name="txt_check_infor">Kiểm tra thông tin</string>
     <string name="create_profile">Tạo hồ sơ</string>
     <string name="profile_detail_menu_name">Chi tiết hồ sơ</string>
+    <string name="date_of_birth">Date of birth:</string>
+    <string name="phone_num">Phone:</string>
+    <string name="province">Province:</string>
 </resources>

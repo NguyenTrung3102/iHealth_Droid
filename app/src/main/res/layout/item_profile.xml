@@ -18,7 +18,16 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/blue"
-            android:text="Name:" />
+            android:text="Name" />
+
+
+        <TextView
+            android:id="@+id/tv_show_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text="Date of birth:" />
 
         <TextView
             android:id="@+id/tv_show_date"
@@ -26,7 +35,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
-            android:text="Date of birth:" />
+            android:text="Phone:" />
 
     <LinearLayout
         android:layout_width="match_parent"
