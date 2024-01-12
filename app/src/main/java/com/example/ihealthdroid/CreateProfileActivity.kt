@@ -120,75 +120,43 @@ class CreateProfileActivity : ComponentActivity() {
                         val userProvince = provinceEditField.text.toString()
                         val userDistrict = districtEditField.text.toString()
 
-                        val docref = db.collection("profiles").document("$userPhone")
+                        if (userName.isNullOrEmpty() ||
+                            userDOB.isNullOrEmpty() ||
+                            sexBtnGr.checkedRadioButtonId == -1 ||
+                            userPhone.isNullOrEmpty() ||
+                            userCID.isNullOrEmpty() ||
+                            userEthnic.isNullOrEmpty() ||
+                            userProvince.isNullOrEmpty() ||
+                            userDistrict.isNullOrEmpty())
 
-                        docref.get().addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                val document = task.result
-                                if(document != null) {
-                                    if (document.exists()) {
-                                        Log.d("TAG", "Document already exists.")
+                        {
+                            Toast.makeText(
+                                this@CreateProfileActivity,
+                                R.string.toast_empty_field,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            val docref = db.collection("profiles").document("$userPhone")
 
-                                        Toast.makeText(
-                                            this@CreateProfileActivity,
-                                            R.string.toast_phone_number_exist,
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    } else {
-                                        Log.d("TAG", "Document doesn't exist.")
+                            docref.get().addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val document = task.result
+                                    if(document != null) {
+                                        if (document.exists()) {
+                                            Log.d("TAG", "Document already exists.")
 
-                                        if (userName.isNullOrEmpty() ||
-                                            userDOB.isNullOrEmpty() ||
-                                            sexBtnGr.checkedRadioButtonId == -1 ||
-                                            userPhone.isNullOrEmpty() ||
-                                            userCID.isNullOrEmpty() ||
-                                            userEthnic.isNullOrEmpty() ||
-                                            userProvince.isNullOrEmpty() ||
-                                            userDistrict.isNullOrEmpty())
-
-                                        {
                                             Toast.makeText(
                                                 this@CreateProfileActivity,
-                                                R.string.toast_empty_field,
+                                                R.string.toast_phone_number_exist,
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                         } else {
-
-                                            // Create a new user with info above
-                                            val user = hashMapOf(
-                                                "name" to userName,
-                                                "dob" to userDOB,
-                                                "sex" to userSex,
-                                                "phone" to userPhone,
-                                                "citizenID" to userCID,
-                                                "ethnic" to userEthnic,
-                                                "province" to userProvince,
-                                                "district" to userDistrict
-                                            )
-
-                                            // Add a new document with a generated ID
-                                            db.collection("profiles").document("$userPhone")
-                                                .set(user)
-                                                .addOnSuccessListener { documentReference ->
-                                                    Log.d(ControlsProviderService.TAG, "DocumentSnapshot added with ID: $userPhone")
-                                                }
-                                                .addOnFailureListener { e ->
-                                                    Log.w(ControlsProviderService.TAG, "Error adding document", e)
-                                                }
-
-                                            Toast.makeText(
-                                                this@CreateProfileActivity,
-                                                R.string.toast_profile_created,
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-
-                                            val intent = Intent(this@CreateProfileActivity, MedicalProfileActivity::class.java)
-                                            startActivity(intent)
+                                            Log.d("TAG", "Document doesn't exist.")
                                         }
                                     }
+                                } else {
+                                    Log.d("TAG", "Error: ", task.exception)
                                 }
-                            } else {
-                                Log.d("TAG", "Error: ", task.exception)
                             }
                         }
                     }
