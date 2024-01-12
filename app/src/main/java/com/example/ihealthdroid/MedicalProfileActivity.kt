@@ -3,9 +3,14 @@ package com.example.ihealthdroid
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +23,7 @@ import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.io.Serializable
 import java.util.Locale
 
 class MedicalProfileActivity : ComponentActivity() {
@@ -71,11 +77,22 @@ class MedicalProfileActivity : ComponentActivity() {
                     adapter = CustomProfileAdapter()
                     recyclerView.adapter = adapter
 
+                    adapter.setOnItemClickListener { profile ->
+                        showProfileDetail(profile)
+                    }
+
                     getProfilesFromFirestore()
                 }
             }
         }
     }
+
+    private fun showProfileDetail(profile: ProfileModel) {
+        val intent = Intent(this@MedicalProfileActivity, ProfileDetailActivity::class.java)
+        intent.putExtra("profile", profile as Parcelable)
+        startActivity(intent)
+    }
+
     private fun getProfilesFromFirestore() {
         val db = FirebaseFirestore.getInstance()
         val profilesCollection = db.collection("profiles")
@@ -94,11 +111,5 @@ class MedicalProfileActivity : ComponentActivity() {
         }.addOnFailureListener { exception ->
             Log.e(TAG, "Error retrieving profiles from Firestore", exception) // Add this logging statement
         }
-    }
-
-    private fun showProfileDetail(profile: ProfileModel) {
-        val intent = Intent(this, ProfileDetailActivity::class.java)
-        intent.putExtra("profile", profile)
-        startActivity(intent)
     }
 }

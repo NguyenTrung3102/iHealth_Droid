@@ -2,17 +2,18 @@ package com.example.ihealthdroid
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 
 data class ProfileModel(
-    val name: String,
-    val dob: String,
-    val sex: String,
-    val phone: String,
-    val citizenID: String,
-    val ethnic: String,
-    val province: String,
-    val district: String
-) : Parcelable {
+    val name: String = "",
+    val dob: String = "",
+    val sex: String = "",
+    val phone: String = "",
+    val citizenID: String = "",
+    val ethnic: String = "",
+    val province: String = "",
+    val district: String = ""
+) : Parcelable, Serializable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -48,5 +49,4 @@ data class ProfileModel(
             return arrayOfNulls(size)
         }
     }
-    constructor() : this("", "", "", "", "", "", "", "")
 }

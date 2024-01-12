@@ -161,6 +161,7 @@ class CreateProfileActivity : ComponentActivity() {
                                                 "sex" to userSex,
                                                 "phone" to userPhone,
                                                 "citizenID" to userCID,
+                                                "ethnic" to userEthnic,
                                                 "province" to userProvince,
                                                 "district" to userDistrict
                                             )
