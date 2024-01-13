@@ -18,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.Calendar
@@ -51,6 +52,7 @@ class CreateProfileActivity : ComponentActivity() {
                     val updatedContext = context.createConfigurationContext(configuration)
                     setContentView(R.layout.create_profile_layout)
 
+                    val loggedInAcc = FirebaseAuth.getInstance().currentUser
                     val db = Firebase.firestore
 
                     val backToProfileBtn = findViewById<ImageButton>(R.id.back_to_profile)
@@ -103,15 +105,18 @@ class CreateProfileActivity : ComponentActivity() {
 
                     val createProfileBtn = findViewById<Button>(R.id.btn_create_profile)
                     createProfileBtn.setOnClickListener {
+
+                        var profileCreator: String = loggedInAcc?.uid ?: ""
+
                         val userName = nameEditField.text.toString()
                         val userDOB = dobEditField.text.toString()
 
                         val sexId = sexBtnGr.indexOfChild(findViewById(sexBtnGr.checkedRadioButtonId))
                         var userSex = sexId.toString()
-                        if (userSex == "0") {
-                            userSex = "male"
+                        userSex = if (userSex == "0") {
+                            "male"
                         } else {
-                            userSex = "female"
+                            "female"
                         }
 
                         val userPhone = phoneEditField.text.toString()
@@ -155,6 +160,7 @@ class CreateProfileActivity : ComponentActivity() {
 
                                             // Create a new user with info above
                                             val user = hashMapOf(
+                                                "createdBy" to profileCreator,
                                                 "name" to userName,
                                                 "dob" to userDOB,
                                                 "sex" to userSex,

@@ -69,11 +69,10 @@ class SettingsActivity : ComponentActivity() {
                             id: Long
                         ) {
                             if (isSpinnerInitialized) {
-                                val selectedLanguage =
-                                    parent?.getItemAtPosition(position).toString()
+                                val selectedLanguage = position
                                 val languageCode = when (selectedLanguage) {
-                                    "English" -> "en_US"
-                                    "Tiếng Việt" -> "vi"
+                                    1 -> "en_US"
+                                    2 -> "vi"
                                     else -> null // Return null for "Select Language" option
                                 }
                                 val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)

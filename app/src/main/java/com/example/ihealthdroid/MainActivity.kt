@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
+import com.google.firebase.auth.FirebaseAuth
 import java.util.Locale
 
 class MainActivity : ComponentActivity() {
@@ -42,7 +44,14 @@ class MainActivity : ComponentActivity() {
                     val updatedContext = context.createConfigurationContext(configuration)
                     setContentView(R.layout.main_menu_layout)
 
-                    val languageCode = intent.getStringExtra("LANGUAGE_CODE")
+                    val mainMenuUserInfoField = findViewById<TextView>(R.id.main_menu_user_email)
+
+                    val loggedInAcc = FirebaseAuth.getInstance().currentUser
+                    if (loggedInAcc != null) {
+                        mainMenuUserInfoField.text = loggedInAcc.email
+                    } else {
+                        mainMenuUserInfoField.text = ""
+                    }
 
                     val medicalProfileBtn = findViewById<ImageButton>(R.id.btn_profile)
                     medicalProfileBtn.setOnClickListener {

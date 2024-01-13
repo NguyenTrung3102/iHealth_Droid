@@ -45,17 +45,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:text="Full name:" />
+            android:text="@string/full_name" />
 
         <EditText
             android:id="@+id/edit_tv_name"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="36dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Full name"
+            android:hint="@string/full_name_hint"
             android:inputType="text"
             android:paddingLeft="15dp" />
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Day of birth:" />
+            android:text="@string/date_of_birth" />
 
         <EditText
             android:id="@+id/edit_tv_date"
@@ -74,13 +74,13 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
-            android:ems="10"
-            android:hint="dd/mm/yyyy"
-            android:inputType="date"
             android:clickable="false"
             android:cursorVisible="false"
+            android:ems="10"
             android:focusable="false"
             android:focusableInTouchMode="false"
+            android:hint="@string/dob_hint"
+            android:inputType="date"
             android:paddingLeft="15dp" />
 
         <TextView
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Sex:" />
+            android:text="@string/sex" />
 
         <RadioGroup
             android:id="@+id/btn_grp_sex"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_weight="1"
-                android:text="Male" />
+                android:text="@string/male_btn_grp" />
 
             <RadioButton
                 android:id="@+id/radio_btn_female"
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="40dp"
                 android:layout_weight="1"
-                android:text="Female" />
+                android:text="@string/female_btn_grp" />
 
         </RadioGroup>
 
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Phone number: " />
+            android:text="@string/phone_num" />
 
         <EditText
             android:id="@+id/edit_tv_phone"
@@ -131,7 +131,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter phone number"
+            android:hint="@string/phone_num_hint"
             android:inputType="phone"
             android:paddingLeft="15dp" />
 
@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Citizen Identify Card:" />
+            android:text="@string/cID" />
 
         <EditText
             android:id="@+id/edit_tv_citizen"
@@ -151,7 +151,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter citizen identify card"
+            android:hint="@string/cID_hint"
             android:inputType="text"
             android:paddingLeft="15dp" />
 
@@ -161,7 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Ethnic:" />
+            android:text="@string/ethnic" />
 
         <EditText
             android:id="@+id/edit_tv_ethnic"
@@ -171,7 +171,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter ethnic"
+            android:hint="@string/ethnic_hint"
             android:inputType="text"
             android:paddingLeft="15dp" />
 
@@ -181,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Province:" />
+            android:text="@string/province" />
 
         <EditText
             android:id="@+id/edit_tv_province"
@@ -191,7 +191,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter province"
+            android:hint="@string/province_hint"
             android:inputType="text"
             android:paddingLeft="15dp" />
 
@@ -201,7 +201,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Distric:" />
+            android:text="@string/district" />
 
         <EditText
             android:id="@+id/edit_tv_distric"
@@ -211,7 +211,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/border_background"
             android:ems="10"
-            android:hint="Enter distric"
+            android:hint="@string/district_hint"
             android:inputType="text"
             android:paddingLeft="15dp" />
 
@@ -222,7 +222,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_button"
-            android:text="Create"
+            android:text="@string/create_profile_btn_label"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />

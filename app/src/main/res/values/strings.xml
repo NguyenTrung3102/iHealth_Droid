@@ -2,7 +2,12 @@
     <string-array name="languages_array">
         <item>Select Language</item>
         <item>English</item>
-        <item>Tiếng Việt</item>
+        <item>Vietnamese</item>
+    </string-array>
+
+    <string-array name="role_aray">
+        <item>Doctor</item>
+        <item>Patient</item>
     </string-array>
 
     <string name="app_name">iHealth</string>
@@ -46,4 +51,21 @@
     <string name="toast_profile_created">Profile created successfully!</string>
     <string name="toast_profile_deleted">Profile deleted successfully!</string>
     <string name="toast_profile_delete_failed">Can\'t delete profile!</string>
+    <string name="account_type_choose_label">You are:</string>
+    <string name="ethnic">Ethnic:</string>
+    <string name="full_name">Full Name:</string>
+    <string name="dob_hint">day/month/year</string>
+    <string name="sex">Sex:</string>
+    <string name="male_btn_grp">Male</string>
+    <string name="female_btn_grp">Female</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="phone_num_hint">Enter a phone number</string>
+    <string name="cID">Citizen Identify Card:</string>
+    <string name="cID_hint">Enter a valid ID</string>
+    <string name="ethnic_hint">Enter your Ethnic</string>
+    <string name="province_hint">Enter province/city where you\'re living</string>
+    <string name="district">District:</string>
+    <string name="district_hint">Enter district where you\'re living</string>
+    <string name="create_profile_btn_label">Create</string>
+    <string name="result_list_profile">Result:</string>
 </resources>

@@ -1,4 +1,15 @@
 <resources>
+    <string-array name="languages_array">
+        <item>Chọn ngôn ngữ</item>
+        <item>Tiếng Anh</item>
+        <item>Tiếng Việt</item>
+    </string-array>
+
+    <string-array name="role_aray">
+        <item>Bác sĩ</item>
+        <item>Bệnh nhân</item>
+    </string-array>
+
     <string name="app_name">iHealth</string>
 
     <string name="profile">Hồ sơ y tế</string>
@@ -31,7 +42,7 @@
     <string name="profile_detail_menu_name">Chi tiết hồ sơ</string>
     <string name="date_of_birth">Ngày sinh:</string>
     <string name="phone_num">SĐT:</string>
-    <string name="province">Tỉnh:</string>
+    <string name="province">Tỉnh/Thành phố:</string>
     <string name="profile_delete_guide">Nếu muốn xóa một hồ sơ cụ thể, nhập số điện thoại vào đây:</string>
     <string name="profile_delete_btn_label">Xóa</string>
     <string name="profile_delete_phone_hint">Nhập số điện thoại</string>
@@ -39,4 +50,21 @@
     <string name="toast_profile_created">Hồ sơ đã được tạo thành công</string>
     <string name="toast_profile_deleted">Hồ sơ đã được xóa!</string>
     <string name="toast_profile_delete_failed">Không thể xóa hồ sơ!</string>
+    <string name="account_type_choose_label">Bạn là:</string>
+    <string name="ethnic">Dân tộc:</string>
+    <string name="full_name">Họ tên:</string>
+    <string name="dob_hint">ngày/tháng/năm</string>
+    <string name="sex">Giới tính:</string>
+    <string name="male_btn_grp">Nam</string>
+    <string name="female_btn_grp">Nữ</string>
+    <string name="full_name_hint">Họ tên</string>
+    <string name="phone_num_hint">Nhập SĐT</string>
+    <string name="cID">CCCD:</string>
+    <string name="cID_hint">Nhập số CCCD hợp lệ</string>
+    <string name="ethnic_hint">Nhập tên dân tộc</string>
+    <string name="province_hint">Nhập tỉnh/thành phố nơi bạn sinh sống</string>
+    <string name="district">Quận/huyện:</string>
+    <string name="district_hint">Nhập quận/huyện nơi bạn sinh sống</string>
+    <string name="create_profile_btn_label">Tạo</string>
+    <string name="result_list_profile">Kết quả:</string>
 </resources>

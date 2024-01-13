@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -124,22 +125,32 @@ class MedicalProfileActivity : ComponentActivity() {
     }
 
     private fun getProfilesFromFirestore() {
+
+        val loggedInAcc = FirebaseAuth.getInstance().currentUser
+
+        var profileCreator: String = loggedInAcc?.uid ?: ""
+
         val db = FirebaseFirestore.getInstance()
         val profilesCollection = db.collection("profiles")
 
-        profilesCollection.get().addOnSuccessListener { documents ->
-            val profileList = mutableListOf<ProfileModel>()
+        profilesCollection.whereEqualTo("createdBy", profileCreator)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                val profileList = mutableListOf<ProfileModel>()
 
-            for (document in documents) {
-                val profile = document.toObject(ProfileModel::class.java)
-                profileList.add(profile)
+                for (document in querySnapshot.documents) {
+                    val profile = document.toObject(ProfileModel::class.java)
+                    if (profile != null) {
+                        profileList.add(profile)
+                    }
+                }
+
+                Log.d(TAG, "Retrieved ${profileList.size} profiles from Firestore")
+
+                adapter.submitList(profileList)
             }
-
-            Log.d(TAG, "Retrieved ${profileList.size} profiles from Firestore") // Add this logging statement
-
-            adapter.submitList(profileList)
-        }.addOnFailureListener { exception ->
-            Log.e(TAG, "Error retrieving profiles from Firestore", exception) // Add this logging statement
-        }
+            .addOnFailureListener { exception ->
+                Log.e(TAG, "Error retrieving profiles from Firestore", exception)
+            }
     }
 }

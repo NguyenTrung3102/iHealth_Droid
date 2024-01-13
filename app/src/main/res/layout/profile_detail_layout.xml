@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:text="Full name:" />
+            android:text="@string/full_name" />
 
         <TextView
             android:id="@+id/edit_tv_name"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Day of birth:" />
+            android:text="@string/date_of_birth" />
 
         <TextView
             android:id="@+id/edit_tv_date"
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Sex:" />
+            android:text="@string/sex" />
 
         <TextView
             android:id="@+id/edit_tv_sex"
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Phone number: " />
+            android:text="@string/phone_num" />
 
         <TextView
             android:id="@+id/edit_tv_phone"
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Citizen Identify Card:" />
+            android:text="@string/cID" />
 
         <TextView
             android:id="@+id/edit_tv_citizen"
@@ -160,7 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Ethnic:" />
+            android:text="@string/ethnic" />
 
         <TextView
             android:id="@+id/edit_tv_ethnic"
@@ -183,7 +183,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Province:" />
+            android:text="@string/province" />
 
         <TextView
             android:id="@+id/edit_tv_province"
@@ -206,7 +206,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Distric:" />
+            android:text="@string/district" />
 
         <TextView
             android:id="@+id/edit_tv_distric"

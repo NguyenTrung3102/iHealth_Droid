@@ -3,8 +3,12 @@ package com.example.ihealthdroid
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,11 +18,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import java.util.Locale
 
 class AccountCreatingActivity : ComponentActivity() {
+
+    var isSpinnerInitialized: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,6 +59,37 @@ class AccountCreatingActivity : ComponentActivity() {
                     val userNameField = findViewById<EditText>(R.id.username_input)
                     val passwordInputField = findViewById<EditText>(R.id.password_input)
                     val passwordConfirmField = findViewById<EditText>(R.id.password_confirm)
+                    val accRoleSpinner: Spinner = findViewById(R.id.account_role_spinner)
+                    val adapter = ArrayAdapter.createFromResource(
+                        this,
+                        R.array.role_aray, android.R.layout.simple_spinner_item
+                    )
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    accRoleSpinner.adapter = adapter
+
+                    var accRole = ""
+                    accRoleSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            parent: AdapterView<*>?,
+                            view: View?,
+                            position: Int,
+                            id: Long
+                        ) {
+
+                            if (isSpinnerInitialized) {
+                                accRole = when (position) {
+                                    0 -> "doctor"
+                                    1 -> "patient"
+                                    else -> "" // Return null for "Select Language" option
+                                }
+                            } else {
+                                isSpinnerInitialized = true
+                            }
+                        }
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                            // Do nothing
+                        }
+                    }
 
                     val createAccountBtn = findViewById<Button>(R.id.create_account_btn)
                     createAccountBtn.setOnClickListener {
@@ -59,46 +97,63 @@ class AccountCreatingActivity : ComponentActivity() {
                         val pwdInput = passwordInputField.text.toString()
                         val pwdConfirm = passwordConfirmField.text.toString()
 
-                        if (email.isNullOrEmpty() || pwdInput.isNullOrEmpty() || pwdConfirm.isNullOrEmpty()) {
+                        if (email.isNullOrEmpty() || pwdInput.isNullOrEmpty() || pwdConfirm.isNullOrEmpty() || accRole.isNullOrEmpty()) {
                             Toast.makeText(
                                 baseContext,
                                 context.getString(R.string.toast_empty_field),
-                                Toast.LENGTH_SHORT,
+                                Toast.LENGTH_SHORT
                             ).show()
                         } else {
                             if (pwdInput == pwdConfirm) {
                                 auth.createUserWithEmailAndPassword(email, pwdInput)
                                     .addOnCompleteListener(this) { task ->
                                         if (task.isSuccessful) {
-                                            // Sign in success, update UI with the signed-in user's information
-                                            //Log.d(TAG, "createUserWithEmail:success")
                                             val user = auth.currentUser
-                                            //updateUI(user)
+                                            val uid = user?.uid
 
-                                            Toast.makeText(
-                                                baseContext,
-                                                context.getString(R.string.toast_auth_succeeded),
-                                                Toast.LENGTH_SHORT,
-                                            ).show()
+                                            val db = FirebaseFirestore.getInstance()
+                                            val usersCollection = db.collection("accounts")
+                                            val userDocument = usersCollection.document(uid!!)
 
-                                            val intent = Intent(this@AccountCreatingActivity, AccountSignInActivity::class.java)
-                                            startActivity(intent)
+                                            val userData = hashMapOf(
+                                                "email" to email,
+                                                "role" to accRole
+                                            )
+
+                                            userDocument.set(userData)
+                                                .addOnSuccessListener {
+                                                    Toast.makeText(
+                                                        baseContext,
+                                                        context.getString(R.string.toast_auth_succeeded),
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+
+                                                    val intent = Intent(
+                                                        this@AccountCreatingActivity,
+                                                        AccountSignInActivity::class.java
+                                                    )
+                                                    startActivity(intent)
+                                                }
+                                                .addOnFailureListener { exception ->
+                                                    Toast.makeText(
+                                                        baseContext,
+                                                        context.getString(R.string.toast_auth_failed),
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
                                         } else {
-                                            // If sign in fails, display a message to the user.
-                                            //Log.w(TAG, "createUserWithEmail:failure", task.exception)
                                             Toast.makeText(
                                                 baseContext,
                                                 context.getString(R.string.toast_auth_failed),
-                                                Toast.LENGTH_SHORT,
+                                                Toast.LENGTH_SHORT
                                             ).show()
-                                            //updateUI(null)
                                         }
                                     }
                             } else {
                                 Toast.makeText(
                                     baseContext,
                                     context.getString(R.string.toast_pwd_confirm_mismatch),
-                                    Toast.LENGTH_SHORT,
+                                    Toast.LENGTH_SHORT
                                 ).show()
                             }
                         }

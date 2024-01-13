@@ -61,7 +61,17 @@ class ProfileDetailActivity : ComponentActivity() {
                     if (profile != null) {
                         userNameView.text = profile.name
                         userDOBView.text = profile.dob
-                        userSexView.text = profile.sex
+
+                        if (profile.sex == "male") {
+                            userSexView.text = resources.getText(R.string.male_btn_grp)
+                        } else {
+                            if (profile.sex == "female") {
+                                userSexView.text = resources.getText(R.string.female_btn_grp)
+                            } else {
+                                userSexView.text = ""
+                            }
+                        }
+
                         userPhoneView.text = profile.phone
                         userCIDView.text = profile.citizenID
                         userEthnicView.text = profile.ethnic
