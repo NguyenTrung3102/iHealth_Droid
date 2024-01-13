@@ -5,7 +5,7 @@
         <item>Tiếng Việt</item>
     </string-array>
 
-    <string-array name="role_aray">
+    <string-array name="role_array">
         <item>Bác sĩ</item>
         <item>Bệnh nhân</item>
     </string-array>
@@ -53,7 +53,7 @@
     <string name="account_type_choose_label">Bạn là:</string>
     <string name="ethnic">Dân tộc:</string>
     <string name="full_name">Họ tên:</string>
-    <string name="dob_hint">ngày/tháng/năm</string>
+    <string name="dob_hint">ngày-tháng-năm</string>
     <string name="sex">Giới tính:</string>
     <string name="male_btn_grp">Nam</string>
     <string name="female_btn_grp">Nữ</string>

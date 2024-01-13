@@ -89,7 +89,7 @@ class CreateProfileActivity : ComponentActivity() {
                             { view, year, monthOfYear, dayOfMonth ->
                                 // on below line we are setting
                                 // date to our edit text.
-                                val dat = (dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
+                                val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
                                 dobEditField.setText(dat)
                             },
                             // on below line we are passing year, month

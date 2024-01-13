@@ -2,7 +2,10 @@ package com.example.ihealthdroid
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.service.controls.ControlsProviderService
+import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -13,6 +16,7 @@ import android.widget.ImageButton
 import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +31,8 @@ import java.util.Calendar
 import java.util.Locale
 
 class PickAppointmentActivity : ComponentActivity() {
+
+    var isSpinnerInitialized = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -86,21 +92,24 @@ class PickAppointmentActivity : ComponentActivity() {
                                 showName.text = name
 
                                 val showBirthDay = findViewById<TextView>(R.id.tv_show_date)
-                                showBirthDay.text = this.getString(R.string.date_of_birth)
-                                showBirthDay.text = String.format("%s %s", showBirthDay.text, birthDate)
+                                showBirthDay.text = birthDate
 
                                 val showPhone = findViewById<TextView>(R.id.tv_show_phone)
-                                showPhone.text = this.getString(R.string.phone_num)
-                                showPhone.text = String.format("%s %s", showPhone.text, phoneNum)
+                                showPhone.text = phoneNum
 
                                 val showProvince = findViewById<TextView>(R.id.tv_show_province)
-                                showProvince.text = this.getString(R.string.province)
-                                showProvince.text = String.format("%s %s", showProvince.text, province)
+                                showProvince.text = province
 
 
                             } else {
                                 //Handle the case where the document does not exist
                                 Log.d("TAG", "Profile not found ")
+
+                                Toast.makeText(
+                                    this@PickAppointmentActivity,
+                                    "Profile not found",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
 
                         }.addOnFailureListener { exception ->
@@ -112,13 +121,23 @@ class PickAppointmentActivity : ComponentActivity() {
                     //Spiner
                     val departmentSpinner: Spinner = findViewById(R.id.spn_department)
                     val departmentData = Firebase.firestore
-                    val docref = departmentData.collection("appointment").document("department")
+
+                    var departmentNameLocale = ""
+
+                    Log.d(TAG, "$selectedLanguage")
+                    departmentNameLocale = if (selectedLanguage == "en_US") {
+                        "department"
+                    } else {
+                        "department-vi"
+                    }
+
+                    val docref = departmentData.collection("appointment").document(departmentNameLocale)
                     docref.get().addOnSuccessListener { documentSnapshot ->
 
                         if(documentSnapshot.exists()) {
 
                             //Get arrayList
-                            val departmentList = documentSnapshot.get("department") as ArrayList<String>
+                            val departmentList = documentSnapshot.get(departmentNameLocale) as ArrayList<String>
 
                             //Create adapter and add data
                             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, departmentList)
@@ -130,16 +149,19 @@ class PickAppointmentActivity : ComponentActivity() {
                         Log.d("TAG", "get failed with ", exception)
                     }
 
+                    var selectedDepartment = ""
                     departmentSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                            // Lấy item được chọn tại vị trí position
+                            if (isSpinnerInitialized) {
+                                selectedDepartment = position.toString()
+                            } else {
+                                isSpinnerInitialized = true
+                            }
                         }
 
                         override fun onNothingSelected(parent: AdapterView<*>?) {
                         }
                     }
-
-
 
                     //Appointment Date
                     val appointmentDayEditField = findViewById<EditText>(R.id.edit_tv_date)
@@ -162,7 +184,7 @@ class PickAppointmentActivity : ComponentActivity() {
                             { view, year, monthOfYear, dayOfMonth ->
                                 // on below line we are setting
                                 // date to our edit text.
-                                val dat = (dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
+                                val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
                                 appointmentDayEditField.setText(dat)
                             },
                             // on below line we are passing year, month
@@ -176,23 +198,110 @@ class PickAppointmentActivity : ComponentActivity() {
                         datePickerDialog.show()
                     }
 
-                    val timeBtnGr = findViewById<RadioGroup>(R.id.btn_group_date)
                     val symptomsEditField = findViewById<EditText>(R.id.edit_tv_symptoms)
+
                     //Make An Appointment
                     val makeAnAppointment = findViewById<Button>(R.id.btn_create_appoint)
-                    /*makeAnAppointment.setOnClickListener{
+                    makeAnAppointment.setOnClickListener{
 
-                        val userDepartment = departmentSpinner.text.toString()
-                        val userDOB = dobEditField.text.toString()
+                        //get user info from 4 textview
+                        val appUserNameField = findViewById<TextView>(R.id.tv_show_name)
+                        val appUserDOBField = findViewById<TextView>(R.id.tv_show_date)
+                        val appUserPhoneField = findViewById<TextView>(R.id.tv_show_phone)
+                        val appUserProvinceField = findViewById<TextView>(R.id.tv_show_province)
 
-                        val sexId = sexBtnGr.indexOfChild(findViewById(sexBtnGr.checkedRadioButtonId))
-                        var userSex = sexId.toString()
-                        userSex = if (userSex == "0") {
-                            "male"
+                        val appUserName = appUserNameField.text.toString()
+                        val appUserDOB = appUserDOBField.text.toString()
+                        val appUserPhone = appUserPhoneField.text.toString()
+                        val appUserProvince = appUserProvinceField.text.toString()
+
+                        //get selected department index position in spinner
+                        val appSelectedDepartment = selectedDepartment
+
+                        //get selected date for appointment
+                        val appSelectedDate = appointmentDayEditField.text.toString()
+
+                        //get selected time for appointment
+                        val timeBtnGr = findViewById<RadioGroup>(R.id.btn_group_date)
+                        val timeId = timeBtnGr.indexOfChild(findViewById(timeBtnGr.checkedRadioButtonId))
+                        var selectedTime = timeId.toString()
+                        val appSelectedTime = selectedTime
+
+                        //get user symptoms info from edit text
+                        val appSymptomsInfo = symptomsEditField.text.toString()
+
+                        val db = Firebase.firestore //initialize Firestore pushing
+
+                        if (appUserName.isNullOrEmpty() ||
+                            appUserDOB.isNullOrEmpty() ||
+                            appUserPhone.isNullOrEmpty() ||
+                            appUserProvince.isNullOrEmpty() ||
+                            appSelectedDepartment.isNullOrEmpty() ||
+                            appSelectedDate.isNullOrEmpty() ||
+                            timeBtnGr.checkedRadioButtonId == -1 ||
+                            appSymptomsInfo.isNullOrEmpty())
+
+                        {
+                            Toast.makeText(
+                                this@PickAppointmentActivity,
+                                R.string.toast_empty_field,
+                                Toast.LENGTH_SHORT
+                            ).show()
                         } else {
-                            "female"
+                            val docref = db.collection("appointments").document("$appSelectedDate/$appSelectedTime/$appUserPhone")
+
+                            docref.get().addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val document = task.result
+                                    if(document != null) {
+                                        if (document.exists()) {
+                                            Log.d("TAG", "Document already exists.")
+
+                                            Toast.makeText(
+                                                this@PickAppointmentActivity,
+                                                "Can't create appointment because there is other appointment at your selected time",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        } else {
+                                            Log.d("TAG", "Document doesn't exist.")
+
+                                            // Create a new user with info above
+                                            val appStatus = "pending" //Initialize appointment Status, default is Pending
+                                            val user = hashMapOf(
+                                                "appUserName" to appUserName,
+                                                "appUserDOB" to appUserDOB,
+                                                "appUserPhone" to appUserPhone,
+                                                "appUserProvince" to appUserProvince,
+                                                "appSelectedDepartment" to appSelectedDepartment,
+                                                "appSelectedDate" to appSelectedDate,
+                                                "appSelectedTime" to appSelectedTime,
+                                                "appSymptomsInfo" to appSymptomsInfo,
+                                                "appStatus" to appStatus /* pushing status to database,
+                                                 when a doctor/operator accept the appointment,
+                                                 it'll be overwrite to Accepted */
+                                            )
+
+                                            // Add a new document with a generated ID
+                                            db.collection("appointments").document("$appSelectedDate/$appSelectedTime/$appUserPhone")
+                                                .set(user)
+                                                .addOnSuccessListener {
+                                                    Toast.makeText(
+                                                        this@PickAppointmentActivity,
+                                                        R.string.toast_profile_created,
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                                .addOnFailureListener { e ->
+                                                    Log.w(ControlsProviderService.TAG, "Error adding document", e)
+                                                }
+                                        }
+                                    }
+                                } else {
+                                    Log.d("TAG", "Error: ", task.exception)
+                                }
+                            }
                         }
-                    }*/
+                    }
                 }
             }
         }

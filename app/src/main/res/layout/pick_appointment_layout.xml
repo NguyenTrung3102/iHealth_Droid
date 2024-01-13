@@ -94,25 +94,22 @@
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:textColor="@color/nav_bar"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                android:text="Name" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_show_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:text="@string/date_of_birth" />
+                android:paddingTop="10dp" />
 
             <TextView
                 android:id="@+id/tv_show_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:text="@string/phone_num" />
+                android:paddingTop="10dp" />
 
             <TextView
                 android:id="@+id/tv_show_province"
@@ -120,8 +117,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:text="@string/province" />
+                android:paddingBottom="10dp" />
         </LinearLayout>
 
         <TextView

@@ -62,7 +62,7 @@ class AccountCreatingActivity : ComponentActivity() {
                     val accRoleSpinner: Spinner = findViewById(R.id.account_role_spinner)
                     val adapter = ArrayAdapter.createFromResource(
                         this,
-                        R.array.role_aray, android.R.layout.simple_spinner_item
+                        R.array.role_array, android.R.layout.simple_spinner_item
                     )
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     accRoleSpinner.adapter = adapter
@@ -75,7 +75,6 @@ class AccountCreatingActivity : ComponentActivity() {
                             position: Int,
                             id: Long
                         ) {
-
                             if (isSpinnerInitialized) {
                                 accRole = when (position) {
                                     0 -> "doctor"

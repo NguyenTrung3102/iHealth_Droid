@@ -5,7 +5,7 @@
         <item>Vietnamese</item>
     </string-array>
 
-    <string-array name="role_aray">
+    <string-array name="role_array">
         <item>Doctor</item>
         <item>Patient</item>
     </string-array>
@@ -54,7 +54,7 @@
     <string name="account_type_choose_label">You are:</string>
     <string name="ethnic">Ethnic:</string>
     <string name="full_name">Full Name:</string>
-    <string name="dob_hint">day/month/year</string>
+    <string name="dob_hint">day-month-year</string>
     <string name="sex">Sex:</string>
     <string name="male_btn_grp">Male</string>
     <string name="female_btn_grp">Female</string>
