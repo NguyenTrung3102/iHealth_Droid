@@ -152,6 +152,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="10dp"
+                        android:layout_marginLeft="10dp"
                         android:paddingBottom="30dp"
                         android:text="@string/account_type_choose_label"
                         android:textColor="@color/blue"
@@ -163,6 +164,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/border_background"
+                        android:layout_marginRight="30dp"
                         android:padding="5dp" />
                 </LinearLayout>
 
