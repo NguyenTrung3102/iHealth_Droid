@@ -62,7 +62,8 @@ class PickAppointmentActivity : ComponentActivity() {
 
                     val backToMenuBtn = findViewById<ImageButton>(R.id.back_to_menu)
                     backToMenuBtn.setOnClickListener {
-                        finish()
+                        val intent = Intent(this@PickAppointmentActivity, MainActivity::class.java)
+                        startActivity(intent)
                     }
 
                     //Get information
@@ -301,6 +302,12 @@ class PickAppointmentActivity : ComponentActivity() {
                                 }
                             }
                         }
+                    }
+
+                    val listButton = findViewById<ImageButton>(R.id.btn_list_appointment)
+                    listButton.setOnClickListener {
+                        val intent = Intent(this@PickAppointmentActivity, AppointmentList::class.java)
+                        startActivity(intent)
                     }
                 }
             }
