@@ -48,7 +48,7 @@
             android:text="@string/full_name" />
 
         <TextView
-            android:id="@+id/edit_tv_name"
+            android:id="@+id/edit_tv_app_name"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
@@ -68,10 +68,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Patient ID:" />
+            android:text="@string/phone_num" />
 
         <TextView
-            android:id="@+id/edit_tv_patient_ID"
+            android:id="@+id/edit_tv_app_phone"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Accommodation:" />
+            android:text="@string/province" />
 
         <TextView
             android:id="@+id/edit_tv_accommodation"
@@ -116,10 +116,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Department:" />
+            android:text="@string/department_picked" />
 
         <TextView
-            android:id="@+id/edit_tv_department"
+            android:id="@+id/edit_tv_app_department"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Appointment date: " />
+            android:text="@string/appointment_date" />
 
         <TextView
             android:id="@+id/edit_tv_appointment_date"
@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Appointment time:" />
+            android:text="@string/appointment_time" />
 
         <TextView
             android:id="@+id/edit_tv_appointment_time"
@@ -188,10 +188,34 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingTop="15dp"
-            android:text="Symptoms:" />
+            android:text="@string/appointment_symptoms" />
 
         <TextView
-            android:id="@+id/edit_tv_symptoms"
+            android:id="@+id/edit_tv_app_symptoms"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/border_background"
+            android:ems="10"
+            android:inputType="text"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp" />
+
+        <TextView
+            android:id="@+id/tv_appointment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="15dp"
+            android:text="@string/appointment_status" />
+
+        <TextView
+            android:id="@+id/edit_tv_appointment_status"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"

@@ -67,4 +67,24 @@
     <string name="district_hint">Nhập quận/huyện nơi bạn sinh sống</string>
     <string name="create_profile_btn_label">Tạo</string>
     <string name="result_list_profile">Kết quả:</string>
+    <string name="pick_a_profile">Chọn 1 hồ sơ:</string>
+    <string name="select_profile_btn_label">Chọn</string>
+    <string name="pick_a_department">Chọn 1 khoa:</string>
+    <string name="pick_a_day">Chọn 1 một ngày:</string>
+    <string name="pick_a_time">Chọn giờ hẹn:</string>
+    <string name="pick_a_time_option_1">Sáng (8h00 - 12h00)</string>
+    <string name="pick_a_time_option_2">Chiều (13h00 - 17h00)</string>
+    <string name="symptoms_description">Mô tả các triệu chứng của bạn:</string>
+    <string name="symptoms_description_hint">Vui lòng mô tả các triệu chứng tại ô này</string>
+    <string name="toast_add_appointment_failed">Không thể tạo cuộc hẹn do bạn đã có cuộc hẹn khác tại khung giờ này</string>
+    <string name="toast_add_appointment_succeed">Cuộc hẹn đã được tạo thành công, vui lòng chờ bác sĩ xác nhận sau ít phút</string>
+    <string name="appointment_list_search_btn_label">Tìm kiếm</string>
+    <string name="make_an_appointment_btn_label">Tạo lịch hẹn</string>
+    <string name="department_picked">"Chọn khám tại khoa: "</string>
+    <string name="appointment_date">Ngày hẹn khám:</string>
+    <string name="appointment_time">Khung giờ:</string>
+    <string name="appointment_symptoms">Triệu chứng:</string>
+    <string name="appointment_status">Trạng thái cuộc hẹn:</string>
+    <string name="app_status_pending">Đang chờ tiếp nhận</string>
+    <string name="app_status_accepted">Đã tiếp nhận</string>
 </resources>

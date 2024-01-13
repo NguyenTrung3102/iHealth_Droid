@@ -260,7 +260,7 @@ class PickAppointmentActivity : ComponentActivity() {
 
                                             Toast.makeText(
                                                 this@PickAppointmentActivity,
-                                                "Can't create appointment because there is other appointment at your selected time",
+                                                R.string.toast_add_appointment_failed,
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                         } else {
@@ -288,12 +288,12 @@ class PickAppointmentActivity : ComponentActivity() {
                                                 .addOnSuccessListener {
                                                     Toast.makeText(
                                                         this@PickAppointmentActivity,
-                                                        R.string.toast_profile_created,
+                                                        R.string.toast_add_appointment_succeed,
                                                         Toast.LENGTH_SHORT
                                                     ).show()
                                                 }
                                                 .addOnFailureListener { e ->
-                                                    Log.w(ControlsProviderService.TAG, "Error adding document", e)
+                                                    Log.d(TAG, "Error adding document", e)
                                                 }
                                         }
                                     }

@@ -51,9 +51,9 @@
             android:id="@+id/tv_select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select profile:"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="@string/pick_a_profile" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,22 +66,22 @@
                 android:id="@+id/edit_tv_select"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_weight="10"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="10dp"
+                android:layout_weight="10"
                 android:background="@drawable/border_background"
                 android:ems="10"
-                android:hint="Enter your phone number"
-                android:inputType="text" />
+                android:hint="@string/phone_num_hint"
+                android:inputType="text"
+                android:paddingLeft="10dp" />
 
             <Button
                 android:id="@+id/btn_select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_button"
                 android:layout_weight="1"
-                android:textColor="@color/white"
-                android:text="Select" />
+                android:background="@drawable/rounded_button"
+                android:text="@string/select_profile_btn_label"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
@@ -132,9 +132,9 @@
             android:id="@+id/tv_department"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select department:"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="@string/pick_a_department" />
 
         <Spinner
             android:id="@+id/spn_department"
@@ -148,9 +148,9 @@
             android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select day:"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="@string/pick_a_day" />
 
         <EditText
             android:id="@+id/edit_tv_date"
@@ -172,9 +172,9 @@
             android:id="@+id/tv_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select time:"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="@string/pick_a_time" />
 
         <RadioGroup
             android:id="@+id/btn_group_date"
@@ -188,14 +188,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
-                android:text="Morning (8h - 12h)" />
+                android:text="@string/pick_a_time_option_1" />
 
             <RadioButton
                 android:id="@+id/radio_btn_afternoon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Afternoon (13h-17h)" />
+                android:text="@string/pick_a_time_option_2" />
         </RadioGroup>
 
         <LinearLayout
@@ -208,18 +208,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="Disease symptoms:" />
+                android:text="@string/symptoms_description" />
 
             <EditText
                 android:id="@+id/edit_tv_symptoms"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="9"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_weight="9"
                 android:background="@drawable/border_background"
                 android:gravity="top"
-                android:hint="Please describe your symptoms:"
+                android:hint="@string/symptoms_description_hint"
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp" />
 

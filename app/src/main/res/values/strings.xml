@@ -68,4 +68,24 @@
     <string name="district_hint">Enter district where you\'re living</string>
     <string name="create_profile_btn_label">Create</string>
     <string name="result_list_profile">Result:</string>
+    <string name="pick_a_profile">Select a profile:</string>
+    <string name="select_profile_btn_label">Select</string>
+    <string name="pick_a_department">Select a department:</string>
+    <string name="pick_a_day">Select day:</string>
+    <string name="pick_a_time">Select time:</string>
+    <string name="pick_a_time_option_1">Morning (8AM - 12PM)</string>
+    <string name="pick_a_time_option_2">Afternoon (1PM - 5PM)</string>
+    <string name="symptoms_description">Describe your symptoms:</string>
+    <string name="symptoms_description_hint">Please describe your symptoms here</string>
+    <string name="toast_add_appointment_failed">Can\'t create appointment because there is other appointment at your selected time</string>
+    <string name="toast_add_appointment_succeed">Appointment created successfully, please wait for a doctor to accept it</string>
+    <string name="appointment_list_search_btn_label">Search</string>
+    <string name="make_an_appointment_btn_label">Create an Appointment</string>
+    <string name="department_picked">Department picked:</string>
+    <string name="appointment_date">Appointment Date:</string>
+    <string name="appointment_time">Appointment time:</string>
+    <string name="appointment_symptoms">Symptoms:</string>
+    <string name="appointment_status">Appointment status:</string>
+    <string name="app_status_pending">Pending</string>
+    <string name="app_status_accepted">Accepted</string>
 </resources>

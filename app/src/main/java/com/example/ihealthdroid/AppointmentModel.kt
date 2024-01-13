@@ -10,9 +10,11 @@ import java.io.Serializable
         val appSelectedDepartment: String = "",
         val appSelectedDate: String = "",
         val appSelectedTime: String = "",
-        val appSymptomsInfo: String = ""
+        val appSymptomsInfo: String = "",
+        val appStatus: String = ""
     ) : Parcelable, Serializable {
         constructor(parcel: Parcel) : this(
+            parcel.readString() ?: "",
             parcel.readString() ?: "",
             parcel.readString() ?: "",
             parcel.readString() ?: "",
@@ -30,18 +32,19 @@ import java.io.Serializable
             parcel.writeString(appSelectedDate)
             parcel.writeString(appSelectedTime)
             parcel.writeString(appSymptomsInfo)
+            parcel.writeString(appStatus)
         }
 
         override fun describeContents(): Int {
             return 0
         }
 
-        companion object CREATOR : Parcelable.Creator<ProfileModel> {
-            override fun createFromParcel(parcel: Parcel): ProfileModel {
-                return ProfileModel(parcel)
+        companion object CREATOR : Parcelable.Creator<AppointmentModel> {
+            override fun createFromParcel(parcel: Parcel): AppointmentModel {
+                return AppointmentModel(parcel)
             }
 
-            override fun newArray(size: Int): Array<ProfileModel?> {
+            override fun newArray(size: Int): Array<AppointmentModel?> {
                 return arrayOfNulls(size)
             }
         }
