@@ -1,4 +1,4 @@
-package com.example.ihealthdroid
+package com.example.ihealthdroid.adapter
 
 import android.content.Context
 import android.service.controls.ControlsProviderService.TAG
@@ -10,9 +10,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ihealthdroid.objectModel.AppointmentModel
+import com.example.ihealthdroid.R
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AppointmentAdapter : ListAdapter<AppointmentModel, AppointmentAdapter.AppointmentViewHolder>(DiffCallback()) {
+class AppointmentAdapter : ListAdapter<AppointmentModel, AppointmentAdapter.AppointmentViewHolder>(
+    DiffCallback()
+) {
     private val db = FirebaseFirestore.getInstance()
     private var departmentArray = mutableListOf<String>()
     private var onItemClickListener: ((AppointmentModel) -> Unit)? = null

@@ -1,4 +1,4 @@
-package com.example.ihealthdroid
+package com.example.ihealthdroid.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ihealthdroid.objectModel.ProfileModel
+import com.example.ihealthdroid.R
 
-class CustomProfileAdapter : ListAdapter<ProfileModel, CustomProfileAdapter.ProfileViewHolder>(DiffCallback()) {
+class CustomProfileAdapter : ListAdapter<ProfileModel, CustomProfileAdapter.ProfileViewHolder>(
+    DiffCallback()
+) {
 
     private var onItemClickListener: ((ProfileModel) -> Unit)? = null
 

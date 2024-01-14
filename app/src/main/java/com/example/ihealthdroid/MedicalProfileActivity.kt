@@ -6,13 +6,9 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -22,12 +18,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ihealthdroid.adapter.CustomProfileAdapter
+import com.example.ihealthdroid.objectModel.ProfileModel
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.io.Serializable
 import java.util.Locale
 
 class MedicalProfileActivity : ComponentActivity() {

@@ -1,4 +1,4 @@
-package com.example.ihealthdroid
+package com.example.ihealthdroid.objectModel
 
 import android.os.Parcel
 import android.os.Parcelable

@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Appointment Detail"
+            android:text="@string/appoint_detail_menu_bar_name"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />

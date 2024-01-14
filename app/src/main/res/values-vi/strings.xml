@@ -87,4 +87,6 @@
     <string name="appointment_status">Trạng thái cuộc hẹn:</string>
     <string name="app_status_pending">Đang chờ tiếp nhận</string>
     <string name="app_status_accepted">Đã tiếp nhận</string>
+    <string name="appointment_list_menu_bar_name">Danh sách lịch hẹn</string>
+    <string name="appoint_detail_menu_bar_name">Chi tiết lịch hẹn</string>
 </resources>

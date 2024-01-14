@@ -88,4 +88,6 @@
     <string name="appointment_status">Appointment status:</string>
     <string name="app_status_pending">Pending</string>
     <string name="app_status_accepted">Accepted</string>
+    <string name="appointment_list_menu_bar_name">Appointment List</string>
+    <string name="appoint_detail_menu_bar_name">Appointment Detail</string>
 </resources>

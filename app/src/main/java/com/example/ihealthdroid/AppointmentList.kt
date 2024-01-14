@@ -21,6 +21,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ihealthdroid.adapter.AppointmentAdapter
+import com.example.ihealthdroid.objectModel.AppointmentModel
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
@@ -106,7 +108,6 @@ class AppointmentList : ComponentActivity() {
                     adapter = AppointmentAdapter()
                     recyclerView.adapter = adapter
 
-
                     val searchAppointmentBtn = findViewById<Button>(R.id.app_search_btn)
                     searchAppointmentBtn.setOnClickListener {
 
@@ -124,11 +125,9 @@ class AppointmentList : ComponentActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
-
                             adapter.setOnItemClickListener { appointment ->
                                 showAppointmentDetail(appointment)
                             }
-
                             getAppointmentFromFirestore(appSearchDate, appSearchTime, appSearchPhone)
                         }
                     }
