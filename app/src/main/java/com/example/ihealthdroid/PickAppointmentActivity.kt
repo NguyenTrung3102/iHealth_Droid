@@ -249,7 +249,7 @@ class PickAppointmentActivity : ComponentActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
-                            val docref = db.collection("appointments").document("$appSelectedDepartment"+"_"+"$appSelectedDate"+"_"+"$appSelectedTime"+"_"+"$appUserPhone")
+                            val docref = db.collection("appointments").document("$appSelectedDate"+"_"+"$appSelectedTime"+"_"+"$appUserPhone")
 
                             docref.get().addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
@@ -283,7 +283,7 @@ class PickAppointmentActivity : ComponentActivity() {
                                             )
 
                                             // Add a new document with a generated ID
-                                            db.collection("appointments").document("$appSelectedDepartment"+"_"+"$appSelectedDate"+"_"+"$appSelectedTime"+"_"+"$appUserPhone")
+                                            db.collection("appointments").document("$appSelectedDate"+"_"+"$appSelectedTime"+"_"+"$appUserPhone")
                                                 .set(user)
                                                 .addOnSuccessListener {
                                                     Toast.makeText(
