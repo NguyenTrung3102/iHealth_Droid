@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/profile_detail_menu_name"
+            android:text="@string/profile_doc_edit_menu_bar"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />

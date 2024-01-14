@@ -62,6 +62,7 @@ class MainDoctorActivity : ComponentActivity() {
                     setContentView(R.layout.main_menu_layout_doctor)
 
                     val mainMenuUserInfoField = findViewById<TextView>(R.id.main_menu_user_email)
+                    var selectDepartment = ""
 
                     val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
 
@@ -72,8 +73,25 @@ class MainDoctorActivity : ComponentActivity() {
                             .get()
                             .addOnSuccessListener { document ->
                                 if (document.exists()) {
-                                    val accountRole = document.getString("displayName")
-                                    mainMenuUserInfoField.text = accountRole
+                                    val accountName = document.getString("displayName")
+                                    mainMenuUserInfoField.text = accountName
+                                } else {
+                                    Log.d(ControlsProviderService.TAG, "No account found")
+                                }
+                            }
+                            .addOnFailureListener {
+                                Log.d(ControlsProviderService.TAG, "Error retrieving profiles from Firestore")
+                            }
+                    }
+
+                    val db2 = Firebase.firestore
+                    if (currentUserUid != null) {
+                        db2.collection("profile-doc")
+                            .document(currentUserUid)
+                            .get()
+                            .addOnSuccessListener { document ->
+                                if (document.exists()) {
+                                    selectDepartment = document.getString("doctorDepartment").toString()
                                 } else {
                                     Log.d(ControlsProviderService.TAG, "No account found")
                                 }
@@ -130,6 +148,7 @@ class MainDoctorActivity : ComponentActivity() {
                     }
 
 
+
                     val btnSearchDay = findViewById<Button>(R.id.btn_select_date)
                     btnSearchDay.setOnClickListener{
 
@@ -144,7 +163,7 @@ class MainDoctorActivity : ComponentActivity() {
                             showAppointmentDetail(profile)
                         }
 
-                        getAppointmentFromFirestore(selectDay)
+                        getAppointmentFromFirestore(selectDay, selectDepartment)
                     }
 
                 }
@@ -158,13 +177,13 @@ class MainDoctorActivity : ComponentActivity() {
         startActivity(intent)
     }
 
-    private fun getAppointmentFromFirestore(appSearchDate: String) {
-
+    private fun getAppointmentFromFirestore(selectDay: String, selectDepartment: String) {
         val db = FirebaseFirestore.getInstance()
         val appointmentCollection = db.collection("appointments")
 
         appointmentCollection
-            .whereEqualTo("appSelectedDate", appSearchDate)
+            .whereEqualTo("appSelectedDate", selectDay)
+            .whereEqualTo("appSelectedDepartment", selectDepartment)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val appointmentList = mutableListOf<AppointmentModel>()
@@ -183,5 +202,4 @@ class MainDoctorActivity : ComponentActivity() {
                 Log.e(ControlsProviderService.TAG, "Error retrieving appointments from Firestore", exception)
             }
     }
-
 }

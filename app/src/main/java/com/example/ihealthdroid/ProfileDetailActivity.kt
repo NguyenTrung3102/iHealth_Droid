@@ -79,6 +79,13 @@ class ProfileDetailActivity : ComponentActivity() {
                         userProvinceView.text = profile.province
                         userDistrictView.text = profile.district
                     }
+
+                    val editDocProfileBtn = findViewById<ImageButton>(R.id.profile_edit_btn)
+                    editDocProfileBtn.setOnClickListener {
+                        val intent = Intent(this@ProfileDetailActivity, ProfileDetailEditActivity::class.java)
+                        intent.putExtra("userPhone", userPhoneView.text.toString())
+                        startActivity(intent)
+                    }
                 }
             }
         }

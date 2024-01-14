@@ -59,8 +59,8 @@ class MainActivity : ComponentActivity() {
                             .get()
                             .addOnSuccessListener { document ->
                                 if (document.exists()) {
-                                    val accountRole = document.getString("displayName")
-                                    mainMenuUserInfoField.text = accountRole
+                                    val accountName = document.getString("displayName")
+                                    mainMenuUserInfoField.text = accountName
                                 } else {
                                     Log.d(ControlsProviderService.TAG, "No account found")
                                 }
