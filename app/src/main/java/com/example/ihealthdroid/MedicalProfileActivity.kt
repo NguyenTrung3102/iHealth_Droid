@@ -78,25 +78,50 @@ class MedicalProfileActivity : ComponentActivity() {
                         val deleteNumField = findViewById<EditText>(R.id.edit_tv_delete_profile)
                         val deleteNum = deleteNumField.text.toString()
 
-                        db.collection("profiles").document(deleteNum)
-                            .delete()
-                            .addOnSuccessListener {
-                                Toast.makeText(
-                                    this@MedicalProfileActivity,
-                                    R.string.toast_profile_deleted,
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                        // Get the currently logged-in user's UID
+                        val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
 
-                                // refresh activity
-                                finish();
-                                startActivity(getIntent());
+                        // Query the Firestore collection to retrieve the document with the specified ID and createdBy field
+                        db.collection("profiles")
+                            .document(deleteNum)
+                            .get()
+                            .addOnSuccessListener { document ->
+                                if (document.exists()) {
+                                    val createdBy = document.getString("createdBy")
+
+                                    // Check if the createdBy field matches the currently logged-in user's UID
+                                    if (createdBy == currentUserUid) {
+                                        // Delete the document
+                                        db.collection("profiles")
+                                            .document(deleteNum)
+                                            .delete()
+                                            .addOnSuccessListener {
+                                                Toast.makeText(
+                                                    this@MedicalProfileActivity,
+                                                    R.string.toast_profile_deleted,
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+
+                                                // Refresh activity
+                                                finish()
+                                                startActivity(getIntent())
+                                            }
+                                            .addOnFailureListener {
+                                                Toast.makeText(
+                                                    this@MedicalProfileActivity,
+                                                    R.string.toast_profile_delete_failed,
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                    } else {
+                                        Log.d(TAG, "action not allowed")
+                                    }
+                                } else {
+                                    Log.d(TAG, "No profiles found")
+                                }
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    this@MedicalProfileActivity,
-                                    R.string.toast_profile_delete_failed,
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Log.d(TAG, "Error retrieving profiles from Firestore")
                             }
                     }
 

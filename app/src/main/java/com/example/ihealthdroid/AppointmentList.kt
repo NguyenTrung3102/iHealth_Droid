@@ -99,8 +99,6 @@ class AppointmentList : ComponentActivity() {
                         datePickerDialog.show()
                     }
 
-                    val appTimeSearchBtnGr = findViewById<RadioGroup>(R.id.app_search_time_rd_btn_grp)
-
                     val appPhoneSearchField = findViewById<EditText>(R.id.edit_app_phone_search)
 
                     recyclerView = findViewById(R.id.appointment_list)
@@ -112,13 +110,11 @@ class AppointmentList : ComponentActivity() {
                     searchAppointmentBtn.setOnClickListener {
 
                         val appSearchDate = appSearchDayEditField.text.toString()
-                        val appTimeSearchId = appTimeSearchBtnGr.indexOfChild(findViewById(appTimeSearchBtnGr.checkedRadioButtonId))
-                        val appSearchTime = appTimeSearchId.toString()
                         val appSearchPhone = appPhoneSearchField.text.toString()
 
-                        Log.d(TAG, "$appSearchDate/$appSearchTime/$appSearchPhone")
+                        //Log.d(TAG, "$appSearchDate/$appSearchTime/$appSearchPhone")
 
-                        if (appSearchDate.isNullOrEmpty() || appTimeSearchId == -1 || appSearchPhone.isNullOrEmpty()) {
+                        if (appSearchDate.isNullOrEmpty() || appSearchPhone.isNullOrEmpty()) {
                             Toast.makeText(
                                 this@AppointmentList,
                                 R.string.toast_empty_field,
@@ -128,7 +124,7 @@ class AppointmentList : ComponentActivity() {
                             adapter.setOnItemClickListener { appointment ->
                                 showAppointmentDetail(appointment)
                             }
-                            getAppointmentFromFirestore(appSearchDate, appSearchTime, appSearchPhone)
+                            getAppointmentFromFirestore(appSearchDate, appSearchPhone)
                         }
                     }
                 }
@@ -141,17 +137,23 @@ class AppointmentList : ComponentActivity() {
         startActivity(intent)
     }
 
-    private fun getAppointmentFromFirestore(appSearchDate: String, appSearchTime: String, appSearchPhone: String) {
+    private fun getAppointmentFromFirestore(appSelectedDate: String, appSearchPhone: String) {
 
         val db = FirebaseFirestore.getInstance()
-        val appointmentCollection = db.collection("appointments").document("$appSearchDate/$appSearchTime/$appSearchPhone")
-            .get()
-            .addOnSuccessListener { documentSnapshot ->
-                val appointmentList = mutableListOf<AppointmentModel>()
-                val document = documentSnapshot.toObject(AppointmentModel::class.java)
+        val appointmentCollection = db.collection("appointments")
 
-                if (document != null) {
-                    appointmentList.add(document)
+        appointmentCollection
+            .whereEqualTo("appSelectedDate", appSelectedDate)
+            .whereEqualTo("appUserPhone", appSearchPhone)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                val appointmentList = mutableListOf<AppointmentModel>()
+
+                for (documentSnapshot in querySnapshot.documents) {
+                    val document = documentSnapshot.toObject(AppointmentModel::class.java)
+                    if (document != null) {
+                        appointmentList.add(document)
+                    }
                 }
 
                 Log.d(ControlsProviderService.TAG, "Retrieved ${appointmentList.size} appointments from Firestore")

@@ -249,7 +249,7 @@ class PickAppointmentActivity : ComponentActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
-                            val docref = db.collection("appointments").document("$appSelectedDate/$appSelectedTime/$appUserPhone")
+                            val docref = db.collection("appointments").document("$appSelectedDepartment"+"_"+"$appSelectedDate"+"_"+"$appSelectedTime"+"_"+"$appUserPhone")
 
                             docref.get().addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
@@ -283,7 +283,7 @@ class PickAppointmentActivity : ComponentActivity() {
                                             )
 
                                             // Add a new document with a generated ID
-                                            db.collection("appointments").document("$appSelectedDate/$appSelectedTime/$appUserPhone")
+                                            db.collection("appointments").document("$appSelectedDepartment"+"_"+"$appSelectedDate"+"_"+"$appSelectedTime"+"_"+"$appUserPhone")
                                                 .set(user)
                                                 .addOnSuccessListener {
                                                     Toast.makeText(
@@ -301,7 +301,59 @@ class PickAppointmentActivity : ComponentActivity() {
                                     Log.d("TAG", "Error: ", task.exception)
                                 }
                             }
+
+                            /*
+                            val docref2 = db.collection("appointment_doctor").document("$appSelectedDepartment/$appSelectedDate/$appSelectedTime")
+
+                            docref2.get().addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val document = task.result
+                                    if(document != null) {
+                                        if (document.exists()) {
+                                            Log.d("TAG", "Document already exists.")
+
+                                            Toast.makeText(
+                                                this@PickAppointmentActivity,
+                                                R.string.toast_add_appointment_failed,
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        } else {
+                                            Log.d("TAG", "Document doesn't exist.")
+
+                                            // Create a new user with info above
+                                            val appStatus = "pending" //Initialize appointment Status, default is Pending
+                                            val user = hashMapOf(
+                                                "appUserName" to appUserName,
+                                                "appUserDOB" to appUserDOB,
+                                                "appUserPhone" to appUserPhone,
+                                                "appUserProvince" to appUserProvince,
+                                                "appSelectedDepartment" to appSelectedDepartment,
+                                                "appSelectedDate" to appSelectedDate,
+                                                "appSelectedTime" to appSelectedTime,
+                                                "appSymptomsInfo" to appSymptomsInfo,
+                                                "appStatus" to appStatus /* pushing status to database,
+                                                 when a doctor/operator accept the appointment,
+                                                 it'll be overwrite to Accepted */
+                                            )
+
+                                            // Add a new document with a generated ID
+                                            db.collection("appointment_doctor").document("$appSelectedDepartment/$appSelectedDate/$appSelectedTime")
+                                                .set(user)
+                                                .addOnSuccessListener {
+                                                    Log.d(TAG, "Added to appointment collection for doctor successfully")
+                                                }
+                                                .addOnFailureListener { e ->
+                                                    Log.d(TAG, "Error adding document", e)
+                                                }
+                                        }
+                                    }
+                                } else {
+                                    Log.d("TAG", "Error: ", task.exception)
+                                }
+                            }
+                             */
                         }
+
                     }
 
                     val listButton = findViewById<ImageButton>(R.id.btn_list_appointment)
