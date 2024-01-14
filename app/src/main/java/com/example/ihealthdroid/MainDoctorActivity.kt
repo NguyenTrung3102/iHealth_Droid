@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ihealthdroid.adapter.AppointmentAdapter
@@ -88,8 +89,8 @@ class MainDoctorActivity : ComponentActivity() {
                         startActivity(intent)
                     }
 
-                    /*val appSearchDayEditField = findViewById<EditText>(R.id.edit_tv_date)
-                    appSearchDayEditField.setOnClickListener {
+                    val appSearchDayEditField = findViewById<EditText>(R.id.edit_tv_date)
+                    appSearchDayEditField.setOnClickListener() {
                         // on below line we are getting
                         // the instance of our calendar.
                         val c = Calendar.getInstance()
@@ -122,16 +123,24 @@ class MainDoctorActivity : ComponentActivity() {
                         datePickerDialog.show()
                     }
 
-                    recyclerView = findViewById(R.id.list_appointment)
-                    recyclerView.layoutManager = LinearLayoutManager(this)
-                    adapter = AppointmentAdapter()
-                    recyclerView.adapter = adapter
 
-                    adapter.setOnItemClickListener { profile ->
-                        showAppointmentDetail(profile)
+                    val btnSearchDay = findViewById<Button>(R.id.btn_select_date)
+                    btnSearchDay.setOnClickListener{
+
+                        val selectDay = appSearchDayEditField.text.toString()
+
+                        recyclerView = findViewById(R.id.list_appointment)
+                        recyclerView.layoutManager = LinearLayoutManager(this)
+                        adapter = AppointmentAdapter()
+                        recyclerView.adapter = adapter
+
+                        /*adapter.setOnItemClickListener { profile ->
+                            showAppointmentDetail(profile)
+                        }*/
+
+                        getAppointmentFromFirestore(selectDay)
                     }
 
-                    getAppointmentFromFirestore()*/
                 }
             }
         }
@@ -143,13 +152,13 @@ class MainDoctorActivity : ComponentActivity() {
         startActivity(intent)
     }
 
-    private fun getAppointmentFromFirestore(appSearchPhone: String) {
+    private fun getAppointmentFromFirestore(appSearchDate: String) {
 
         val db = FirebaseFirestore.getInstance()
         val appointmentCollection = db.collection("appointments")
 
         appointmentCollection
-            .whereEqualTo("appUserPhone", appSearchPhone)
+            .whereEqualTo("appSelectedDate", appSearchDate)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val appointmentList = mutableListOf<AppointmentModel>()
