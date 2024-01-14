@@ -43,7 +43,7 @@ class ProfileDetailActivity : ComponentActivity() {
                     val updatedContext = context.createConfigurationContext(configuration)
                     setContentView(R.layout.profile_detail_layout)
 
-                    val backToProfileBtn = findViewById<ImageButton>(R.id.back_to_profile)
+                    val backToProfileBtn = findViewById<ImageButton>(R.id.back_to_doc_profile)
                     backToProfileBtn.setOnClickListener {
                         val intent = Intent(this@ProfileDetailActivity, MedicalProfileActivity::class.java)
                         startActivity(intent)

@@ -89,4 +89,8 @@
     <string name="app_status_accepted">Đã tiếp nhận</string>
     <string name="appointment_list_menu_bar_name">Danh sách lịch hẹn</string>
     <string name="appoint_detail_menu_bar_name">Chi tiết lịch hẹn</string>
+    <string name="profile_doc_department">Chuyên khoa:</string>
+    <string name="profile_doc_save_btn_label">Lưu thay đổi</string>
+    <string name="toast_doctor_profile_created">Hồ sơ đã được lưu</string>
+    <string name="profile_doc_edit_menu_bar">Chỉnh sửa hồ sơ</string>
 </resources>

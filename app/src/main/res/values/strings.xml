@@ -90,4 +90,8 @@
     <string name="app_status_accepted">Accepted</string>
     <string name="appointment_list_menu_bar_name">Appointment List</string>
     <string name="appoint_detail_menu_bar_name">Appointment Detail</string>
+    <string name="profile_doc_department">Department:</string>
+    <string name="profile_doc_save_btn_label">Save change</string>
+    <string name="toast_doctor_profile_created">Profile saved</string>
+    <string name="profile_doc_edit_menu_bar">Edit Profile</string>
 </resources>

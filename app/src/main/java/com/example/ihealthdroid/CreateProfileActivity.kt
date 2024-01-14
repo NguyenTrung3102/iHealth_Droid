@@ -55,7 +55,7 @@ class CreateProfileActivity : ComponentActivity() {
                     val loggedInAcc = FirebaseAuth.getInstance().currentUser
                     val db = Firebase.firestore
 
-                    val backToProfileBtn = findViewById<ImageButton>(R.id.back_to_profile)
+                    val backToProfileBtn = findViewById<ImageButton>(R.id.back_to_doc_profile)
                     backToProfileBtn.setOnClickListener {
                         val intent = Intent(this@CreateProfileActivity, MedicalProfileActivity::class.java)
                         startActivity(intent)

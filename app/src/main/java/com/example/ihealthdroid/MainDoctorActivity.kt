@@ -83,6 +83,12 @@ class MainDoctorActivity : ComponentActivity() {
                             }
                     }
 
+                    val checkDocInfo = findViewById<Button>(R.id.btn_information)
+                    checkDocInfo.setOnClickListener {
+                        val intent = Intent(this@MainDoctorActivity, ProfileDetailDoctorActivity::class.java)
+                        startActivity(intent)
+                    }
+
                     val signOutBtn = findViewById<Button>(R.id.sign_out_btn)
                     signOutBtn.setOnClickListener {
                         val intent = Intent(this@MainDoctorActivity, AccountSignInActivity::class.java)

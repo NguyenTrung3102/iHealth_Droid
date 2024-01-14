@@ -3,6 +3,8 @@ package com.example.ihealthdroid
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.service.controls.ControlsProviderService.TAG
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -115,6 +117,25 @@ class AccountCreatingActivity : ComponentActivity() {
                                             val db = FirebaseFirestore.getInstance()
                                             val usersCollection = db.collection("accounts")
                                             val userDocument = usersCollection.document(uid!!)
+
+                                            if (accRole == "doctor") {
+                                                val doctorCollection = db.collection("profile-doc")
+                                                val doctorDocument = doctorCollection.document(uid!!)
+
+                                                val doctorData = hashMapOf(
+                                                    "doctorName" to "",
+                                                    "doctorSex" to "",
+                                                    "doctorDepartment" to ""
+                                                )
+
+                                                doctorDocument.set(doctorData)
+                                                    .addOnSuccessListener {
+                                                        Log.d(TAG, "Doctor profiles created")
+                                                    }
+                                                    .addOnFailureListener { exception ->
+                                                        Log.d(TAG, "Error when creating doctor profiles")
+                                                    }
+                                            }
 
                                             val userData = hashMapOf(
                                                 "displayName" to displayName,
