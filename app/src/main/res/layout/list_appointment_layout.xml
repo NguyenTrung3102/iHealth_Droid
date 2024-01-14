@@ -37,29 +37,42 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RadioGroup
-            android:id="@+id/app_search_time_rd_btn_grp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
         <TextView
             android:id="@+id/app_search_phone_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:text="@string/phone_num" />
 
-        <EditText
-            android:id="@+id/edit_app_phone_search"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="phone" />
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
 
-        <Button
-            android:id="@+id/app_search_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/appointment_list_search_btn_label" />
+            <EditText
+                android:id="@+id/edit_app_phone_search"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="10"
+                android:background="@drawable/border_background"
+                android:hint="@string/phone_num_hint"
+                android:paddingLeft="10dp"
+                android:ems="10"
+                android:inputType="phone" />
+
+            <Button
+                android:id="@+id/app_search_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_button"
+                android:textColor="@color/white"
+                android:text="@string/appointment_list_search_btn_label" />
+        </LinearLayout>
 
     </LinearLayout>
 

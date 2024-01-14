@@ -34,9 +34,10 @@
 
         <ImageButton
             android:id="@+id/profile_edit_btn_doc"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_weight="0.05"
+            android:layout_marginRight="10dp"
             android:background="@color/nav_bar"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_edit" />
@@ -52,36 +53,57 @@
             android:id="@+id/doc_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/full_name" />
 
         <TextView
             android:id="@+id/edit_doc_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border_background"
             android:ems="10" />
 
         <TextView
             android:id="@+id/doc_sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/sex" />
 
         <TextView
             android:id="@+id/edit_doc_sex"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border_background"
             android:ems="10" />
 
         <TextView
             android:id="@+id/doc_department"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/profile_doc_department" />
 
         <TextView
             android:id="@+id/edit_doc_department"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/border_background"
             android:ems="10" />
     </LinearLayout>
 </LinearLayout>
