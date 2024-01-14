@@ -11,9 +11,11 @@ import java.io.Serializable
         val appSelectedDate: String = "",
         val appSelectedTime: String = "",
         val appSymptomsInfo: String = "",
-        val appStatus: String = ""
+        val appStatus: String = "",
+        val appDoctor: String = ""
     ) : Parcelable, Serializable {
         constructor(parcel: Parcel) : this(
+            parcel.readString() ?: "",
             parcel.readString() ?: "",
             parcel.readString() ?: "",
             parcel.readString() ?: "",
@@ -33,6 +35,7 @@ import java.io.Serializable
             parcel.writeString(appSelectedTime)
             parcel.writeString(appSymptomsInfo)
             parcel.writeString(appStatus)
+            parcel.writeString(appDoctor)
         }
 
         override fun describeContents(): Int {

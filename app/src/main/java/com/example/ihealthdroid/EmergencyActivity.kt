@@ -79,9 +79,9 @@ class EmergencyActivity : ComponentActivity() {
 
     private fun showEmergencyDetail(emergency: EmergencyModel) {
         val callPhone = emergency.phone
-        val callIntent: Intent = Uri.parse("tel:$callPhone").let { number ->
-            Intent(Intent.ACTION_DIAL, number)
-        }
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$callPhone")
+        startActivity(intent)
     }
 
     private fun getEmergencyFromFirestore() {

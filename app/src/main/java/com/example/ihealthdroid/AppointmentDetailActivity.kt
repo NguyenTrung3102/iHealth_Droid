@@ -64,6 +64,7 @@ class AppointmentDetailActivity : ComponentActivity() {
                     val userAppTimeView = findViewById<TextView>(R.id.edit_tv_appointment_time)
                     val userAppSymptomsView = findViewById<TextView>(R.id.edit_tv_app_symptoms)
                     val userAppStatusView = findViewById<TextView>(R.id.edit_tv_appointment_status)
+                    val userAppDoctorView = findViewById<TextView>(R.id.edit_app_doctor)
 
 
                     val appointment = intent.getSerializableExtra("appointment") as? AppointmentModel
@@ -109,11 +110,19 @@ class AppointmentDetailActivity : ComponentActivity() {
 
                         userAppSymptomsView.text = appointment.appSymptomsInfo
 
-                        if (appointment.appStatus == "pending") {
-                            userAppStatusView.text = resources.getString(R.string.app_status_pending)
-                        } else {
-                            userAppStatusView.text = resources.getString(R.string.app_status_accepted)
+                        when (appointment.appStatus) {
+                            "pending" -> {
+                                userAppStatusView.text = resources.getString(R.string.app_status_pending)
+                            }
+                            "accepted" -> {
+                                userAppStatusView.text = resources.getText(R.string.app_status_accepted)
+                            }
+                            else -> {
+                                userAppStatusView.text = resources.getText(R.string.app_status_rejected)
+                            }
                         }
+
+                        userAppDoctorView.text = appointment.appDoctor
                     }
                 }
             }

@@ -93,4 +93,8 @@
     <string name="profile_doc_save_btn_label">Lưu thay đổi</string>
     <string name="toast_doctor_profile_created">Hồ sơ đã được lưu</string>
     <string name="profile_doc_edit_menu_bar">Chỉnh sửa hồ sơ</string>
+    <string name="toast_app_accepted">Đã chấp nhận cuộc hẹn</string>
+    <string name="toast_app_rejected">Đã từ chối cuộc hẹn</string>
+    <string name="app_status_rejected">Bị từ chối</string>
+    <string name="app_doctor_name">Bác sĩ:</string>
 </resources>

@@ -94,4 +94,8 @@
     <string name="profile_doc_save_btn_label">Save change</string>
     <string name="toast_doctor_profile_created">Profile saved</string>
     <string name="profile_doc_edit_menu_bar">Edit Profile</string>
+    <string name="toast_app_accepted">Appointment accepted</string>
+    <string name="toast_app_rejected">Appointment rejected</string>
+    <string name="app_status_rejected">Rejected</string>
+    <string name="app_doctor_name">Doctor:</string>
 </resources>

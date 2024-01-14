@@ -270,16 +270,16 @@ class PickAppointmentActivity : ComponentActivity() {
                                             val appStatus = "pending" //Initialize appointment Status, default is Pending
                                             val user = hashMapOf(
                                                 "appUserName" to appUserName,
-                                                "appUserDOB" to appUserDOB,
                                                 "appUserPhone" to appUserPhone,
                                                 "appUserProvince" to appUserProvince,
                                                 "appSelectedDepartment" to appSelectedDepartment,
                                                 "appSelectedDate" to appSelectedDate,
                                                 "appSelectedTime" to appSelectedTime,
                                                 "appSymptomsInfo" to appSymptomsInfo,
-                                                "appStatus" to appStatus /* pushing status to database,
+                                                "appStatus" to appStatus, /* pushing status to database,
                                                  when a doctor/operator accept the appointment,
                                                  it'll be overwrite to Accepted */
+                                                "appDoctor" to ""
                                             )
 
                                             // Add a new document with a generated ID
