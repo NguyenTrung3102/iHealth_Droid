@@ -1,7 +1,13 @@
 package com.example.ihealthdroid
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
+import android.service.controls.ControlsProviderService
+import android.service.controls.ControlsProviderService.TAG
+import android.util.Log
 import android.widget.ImageButton
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,10 +15,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ihealthdroid.adapter.CustomEmergencyAdapter
+import com.example.ihealthdroid.objectModel.EmergencyModel
+import com.example.ihealthdroid.objectModel.ProfileModel
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
 class EmergencyActivity : ComponentActivity() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: CustomEmergencyAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,8 +60,54 @@ class EmergencyActivity : ComponentActivity() {
                     backToMenuBtn.setOnClickListener {
                         finish()
                     }
+
+                    recyclerView = findViewById(R.id.list_emergency)
+                    recyclerView.layoutManager = LinearLayoutManager(this)
+                    adapter = CustomEmergencyAdapter()
+                    recyclerView.adapter = adapter
+
+                    adapter.setOnItemClickListener { emergency ->
+                        showEmergencyDetail(emergency)
+                    }
+
+                    getEmergencyFromFirestore()
                 }
             }
         }
+    }
+
+
+    private fun showEmergencyDetail(emergency: EmergencyModel) {
+        val callPhone = emergency.phone
+        val callIntent: Intent = Uri.parse("tel:$callPhone").let { number ->
+            Intent(Intent.ACTION_DIAL, number)
+        }
+    }
+
+    private fun getEmergencyFromFirestore() {
+
+        val db = FirebaseFirestore.getInstance()
+        val emergencyCollection = db.collection("emergency")
+
+        emergencyCollection
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                val emergencyList = mutableListOf<EmergencyModel>()
+
+                for (document in querySnapshot.documents) {
+                    val emergency = document.toObject(EmergencyModel::class.java)
+                    if (emergency != null) {
+                        Log.d(TAG,"$emergency")
+                        emergencyList.add(emergency)
+                    }
+                }
+
+                Log.d(ControlsProviderService.TAG, "Retrieved ${emergencyList.size} profiles from Firestore")
+
+                adapter.submitList(emergencyList)
+            }
+            .addOnFailureListener { exception ->
+                Log.e(ControlsProviderService.TAG, "Error retrieving profiles from Firestore", exception)
+            }
     }
 }
