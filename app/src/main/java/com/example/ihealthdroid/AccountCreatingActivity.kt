@@ -56,6 +56,7 @@ class AccountCreatingActivity : ComponentActivity() {
                     val updatedContext = context.createConfigurationContext(configuration)
                     setContentView(R.layout.signup_layout)
 
+                    val userDisplayNameField = findViewById<EditText>(R.id.name_input)
                     val userNameField = findViewById<EditText>(R.id.username_input)
                     val passwordInputField = findViewById<EditText>(R.id.password_input)
                     val passwordConfirmField = findViewById<EditText>(R.id.password_confirm)
@@ -92,11 +93,12 @@ class AccountCreatingActivity : ComponentActivity() {
 
                     val createAccountBtn = findViewById<Button>(R.id.create_account_btn)
                     createAccountBtn.setOnClickListener {
+                        val displayName = userDisplayNameField.text.toString()
                         val email = userNameField.text.toString()
                         val pwdInput = passwordInputField.text.toString()
                         val pwdConfirm = passwordConfirmField.text.toString()
 
-                        if (email.isNullOrEmpty() || pwdInput.isNullOrEmpty() || pwdConfirm.isNullOrEmpty() || accRole.isNullOrEmpty()) {
+                        if (displayName.isNullOrEmpty() || email.isNullOrEmpty() || pwdInput.isNullOrEmpty() || pwdConfirm.isNullOrEmpty() || accRole.isNullOrEmpty()) {
                             Toast.makeText(
                                 baseContext,
                                 context.getString(R.string.toast_empty_field),
@@ -115,6 +117,7 @@ class AccountCreatingActivity : ComponentActivity() {
                                             val userDocument = usersCollection.document(uid!!)
 
                                             val userData = hashMapOf(
+                                                "displayName" to displayName,
                                                 "email" to email,
                                                 "role" to accRole
                                             )

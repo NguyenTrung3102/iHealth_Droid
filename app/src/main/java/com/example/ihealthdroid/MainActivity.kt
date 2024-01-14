@@ -3,6 +3,8 @@ package com.example.ihealthdroid
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.service.controls.ControlsProviderService
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -14,6 +16,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.Locale
 
 class MainActivity : ComponentActivity() {
@@ -46,11 +50,24 @@ class MainActivity : ComponentActivity() {
 
                     val mainMenuUserInfoField = findViewById<TextView>(R.id.main_menu_user_email)
 
-                    val loggedInAcc = FirebaseAuth.getInstance().currentUser
-                    if (loggedInAcc != null) {
-                        mainMenuUserInfoField.text = loggedInAcc.email
-                    } else {
-                        mainMenuUserInfoField.text = ""
+                    val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+
+                    val db = Firebase.firestore
+                    if (currentUserUid != null) {
+                        db.collection("accounts")
+                            .document(currentUserUid)
+                            .get()
+                            .addOnSuccessListener { document ->
+                                if (document.exists()) {
+                                    val accountRole = document.getString("displayName")
+                                    mainMenuUserInfoField.text = accountRole
+                                } else {
+                                    Log.d(ControlsProviderService.TAG, "No account found")
+                                }
+                            }
+                            .addOnFailureListener {
+                                Log.d(ControlsProviderService.TAG, "Error retrieving profiles from Firestore")
+                            }
                     }
 
                     val medicalProfileBtn = findViewById<ImageButton>(R.id.btn_profile)

@@ -3,6 +3,8 @@ package com.example.ihealthdroid
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.service.controls.ControlsProviderService
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -13,9 +15,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.ihealthdroid.objectModel.AppointmentModel
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.Locale
 
@@ -84,8 +88,33 @@ class AccountSignInActivity : ComponentActivity() {
                                             Toast.LENGTH_SHORT,
                                         ).show()
 
-                                        val intent = Intent(this@AccountSignInActivity, MainActivity::class.java)
-                                        startActivity(intent)
+                                        val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+
+                                        val db = Firebase.firestore
+                                        if (currentUserUid != null) {
+                                            db.collection("accounts")
+                                                .document(currentUserUid)
+                                                .get()
+                                                .addOnSuccessListener { document ->
+                                                    if (document.exists()) {
+                                                        val accountRole = document.getString("role")
+
+                                                        // Check if the createdBy field matches the currently logged-in user's UID
+                                                        if (accountRole == "doctor") {
+                                                            val intent = Intent(this@AccountSignInActivity, MainDoctorActivity::class.java)
+                                                            startActivity(intent)
+                                                        } else {
+                                                            val intent = Intent(this@AccountSignInActivity, MainActivity::class.java)
+                                                            startActivity(intent)
+                                                        }
+                                                    } else {
+                                                        Log.d(ControlsProviderService.TAG, "No account found")
+                                                    }
+                                                }
+                                                .addOnFailureListener {
+                                                    Log.d(ControlsProviderService.TAG, "Error retrieving profiles from Firestore")
+                                                }
+                                        }
 
                                         //updateUI(user)
                                     } else {
@@ -106,6 +135,8 @@ class AccountSignInActivity : ComponentActivity() {
                     signUpBtn.setOnClickListener {
                         val intent = Intent(this@AccountSignInActivity, AccountCreatingActivity::class.java)
                         startActivity(intent)
+
+
                     }
                 }
             }
