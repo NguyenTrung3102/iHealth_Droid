@@ -83,6 +83,11 @@
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
+        <activity
+            android:name=".AppointmentDetailDoctorActivity"
+            android:exported="true"
+            android:theme="@style/Theme.IHealthDroid">
+        </activity>
     </application>
 
 </manifest>

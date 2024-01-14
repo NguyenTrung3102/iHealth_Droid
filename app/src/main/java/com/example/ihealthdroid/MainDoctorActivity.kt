@@ -134,9 +134,9 @@ class MainDoctorActivity : ComponentActivity() {
                         adapter = AppointmentAdapter()
                         recyclerView.adapter = adapter
 
-                        /*adapter.setOnItemClickListener { profile ->
+                        adapter.setOnItemClickListener { profile ->
                             showAppointmentDetail(profile)
-                        }*/
+                        }
 
                         getAppointmentFromFirestore(selectDay)
                     }
@@ -147,7 +147,7 @@ class MainDoctorActivity : ComponentActivity() {
     }
 
     private fun showAppointmentDetail(appointment: AppointmentModel) {
-        val intent = Intent(this@MainDoctorActivity, AppointmentDetailActivity::class.java)
+        val intent = Intent(this@MainDoctorActivity, AppointmentDetailDoctorActivity::class.java)
         intent.putExtra("appointment", appointment as Parcelable)
         startActivity(intent)
     }
