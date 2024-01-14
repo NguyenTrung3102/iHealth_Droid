@@ -65,13 +65,11 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                     val userAppNameView = findViewById<TextView>(R.id.edit_tv_app_name)
                     val userAppPhoneView = findViewById<TextView>(R.id.edit_tv_app_phone)
                     val userAppProvinceView = findViewById<TextView>(R.id.edit_tv_accommodation)
-                    val userAppSelectedDepartmentView =
-                        findViewById<TextView>(R.id.edit_tv_app_department)
+                    val userAppSelectedDepartmentView = findViewById<TextView>(R.id.edit_tv_app_department)
                     val userAppDateView = findViewById<TextView>(R.id.edit_tv_appointment_date)
                     val userAppTimeView = findViewById<TextView>(R.id.edit_tv_appointment_time)
                     val userAppSymptomsView = findViewById<TextView>(R.id.edit_tv_app_symptoms)
                     val userAppStatusView = findViewById<TextView>(R.id.edit_tv_appointment_status)
-                    val userAppDoctorView = findViewById<TextView>(R.id.edit_app_doctor)
 
 
                     val appointment =
@@ -137,8 +135,6 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                                     resources.getText(R.string.app_status_rejected)
                             }
                         }
-
-                        userAppDoctorView.text = appointment.appDoctor
                     }
 
                     val appDepartment = appointment?.appSelectedDepartment
@@ -151,7 +147,7 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                         .get()
                         .addOnSuccessListener { document ->
                             Log.d(ControlsProviderService.TAG, "Doctor profiles created")
-                            doctorName = document[doctorName].toString()
+                            doctorName = document["doctorName"].toString()
                         }
                         .addOnFailureListener { exception ->
                             Log.d(
@@ -163,13 +159,13 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                     val acceptBtn = findViewById<Button>(R.id.btn_accept)
                     acceptBtn.setOnClickListener {
                         val appData = hashMapOf(
-                            "appUserName" to userAppNameView,
-                            "appUserPhone" to userAppPhoneView,
-                            "appUserProvince" to userAppProvinceView,
+                            "appUserName" to userAppNameView.text.toString(),
+                            "appUserPhone" to userAppPhoneView.text.toString(),
+                            "appUserProvince" to userAppProvinceView.text.toString(),
                             "appSelectedDepartment" to appDepartment,
-                            "appSelectedDate" to userAppDateView,
+                            "appSelectedDate" to userAppDateView.text.toString(),
                             "appSelectedTime" to appTime,
-                            "appSymptomsInfo" to userAppSymptomsView,
+                            "appSymptomsInfo" to userAppSymptomsView.text.toString(),
                             "appStatus" to "accepted", /* pushing status to database,
                                                  when a doctor/operator accept the appointment,
                                                  it'll be overwrite to Accepted */
@@ -178,7 +174,7 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                         userAppStatusView.text = resources.getText(R.string.app_status_accepted)
 
                         db.collection("appointments")
-                            .document("${userAppDateView.text}" + "_" + "${userAppTimeView.text}" + "_" + "${userAppPhoneView.text}")
+                            .document("${userAppDateView.text}" + "_" + "$appTime" + "_" + "${userAppPhoneView.text}")
                             .set(appData)
                             .addOnSuccessListener {
                                 Log.d(ControlsProviderService.TAG, "Appointment Accpeted")
@@ -198,13 +194,13 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                         val rejectBtn = findViewById<Button>(R.id.btn_reject)
                         rejectBtn.setOnClickListener {
                             val appData = hashMapOf(
-                                "appUserName" to userAppNameView,
-                                "appUserPhone" to userAppPhoneView,
-                                "appUserProvince" to userAppProvinceView,
+                                "appUserName" to userAppNameView.text.toString(),
+                                "appUserPhone" to userAppPhoneView.text.toString(),
+                                "appUserProvince" to userAppProvinceView.text.toString(),
                                 "appSelectedDepartment" to appDepartment,
-                                "appSelectedDate" to userAppDateView,
+                                "appSelectedDate" to userAppDateView.text.toString(),
                                 "appSelectedTime" to appTime,
-                                "appSymptomsInfo" to userAppSymptomsView,
+                                "appSymptomsInfo" to userAppSymptomsView.text.toString(),
                                 "appStatus" to "rejected", /* pushing status to database,
                                                  when a doctor/operator accept the appointment,
                                                  it'll be overwrite to Accepted */
@@ -213,7 +209,7 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                             userAppStatusView.text = resources.getText(R.string.app_status_accepted)
 
                             db.collection("appointments")
-                                .document("${userAppDateView.text}" + "_" + "${userAppTimeView.text}" + "_" + "${userAppPhoneView.text}")
+                                .document("${userAppDateView.text}" + "_" + "$appTime" + "_" + "${userAppPhoneView.text}")
                                 .set(appData)
                                 .addOnSuccessListener {
                                     Log.d(ControlsProviderService.TAG, "Appointment Rejected")
