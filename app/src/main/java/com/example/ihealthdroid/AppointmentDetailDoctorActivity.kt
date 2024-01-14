@@ -189,43 +189,43 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                                     ControlsProviderService.TAG,
                                     "Error when creating doctor profiles"
                                 )
-                            }
+                        }
+                    }
 
-                        val rejectBtn = findViewById<Button>(R.id.btn_reject)
-                        rejectBtn.setOnClickListener {
-                            val appData = hashMapOf(
-                                "appUserName" to userAppNameView.text.toString(),
-                                "appUserPhone" to userAppPhoneView.text.toString(),
-                                "appUserProvince" to userAppProvinceView.text.toString(),
-                                "appSelectedDepartment" to appDepartment,
-                                "appSelectedDate" to userAppDateView.text.toString(),
-                                "appSelectedTime" to appTime,
-                                "appSymptomsInfo" to userAppSymptomsView.text.toString(),
-                                "appStatus" to "rejected", /* pushing status to database,
+                    val rejectBtn = findViewById<Button>(R.id.btn_reject)
+                    rejectBtn.setOnClickListener {
+                        val appData = hashMapOf(
+                            "appUserName" to userAppNameView.text.toString(),
+                            "appUserPhone" to userAppPhoneView.text.toString(),
+                            "appUserProvince" to userAppProvinceView.text.toString(),
+                            "appSelectedDepartment" to appDepartment,
+                            "appSelectedDate" to userAppDateView.text.toString(),
+                            "appSelectedTime" to appTime,
+                            "appSymptomsInfo" to userAppSymptomsView.text.toString(),
+                            "appStatus" to "rejected", /* pushing status to database,
                                                  when a doctor/operator accept the appointment,
                                                  it'll be overwrite to Accepted */
-                                "appDoctor" to ""
-                            )
-                            userAppStatusView.text = resources.getText(R.string.app_status_accepted)
+                            "appDoctor" to ""
+                        )
+                        userAppStatusView.text = resources.getText(R.string.app_status_rejected)
 
-                            db.collection("appointments")
-                                .document("${userAppDateView.text}" + "_" + "$appTime" + "_" + "${userAppPhoneView.text}")
-                                .set(appData)
-                                .addOnSuccessListener {
-                                    Log.d(ControlsProviderService.TAG, "Appointment Rejected")
-                                    Toast.makeText(
-                                        this@AppointmentDetailDoctorActivity,
-                                        R.string.toast_app_rejected,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                                .addOnFailureListener { exception ->
-                                    Log.d(
-                                        ControlsProviderService.TAG,
-                                        "Error when creating doctor profiles"
-                                    )
-                                }
-                        }
+                        db.collection("appointments")
+                            .document("${userAppDateView.text}" + "_" + "$appTime" + "_" + "${userAppPhoneView.text}")
+                            .set(appData)
+                            .addOnSuccessListener {
+                                Log.d(ControlsProviderService.TAG, "Appointment Rejected")
+                                Toast.makeText(
+                                    this@AppointmentDetailDoctorActivity,
+                                    R.string.toast_app_rejected,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.d(
+                                    ControlsProviderService.TAG,
+                                    "Error when creating doctor profiles"
+                                )
+                            }
                     }
                 }
             }
