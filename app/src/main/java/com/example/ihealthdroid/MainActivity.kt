@@ -2,6 +2,7 @@ package com.example.ihealthdroid
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.service.controls.ControlsProviderService
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.Key.Companion.I
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -90,8 +92,7 @@ class MainActivity : ComponentActivity() {
 
                     val healthWikiBtn = findViewById<ImageButton>(R.id.btn_search)
                     healthWikiBtn.setOnClickListener {
-                        val intent = Intent(this@MainActivity, HealthWikiActivity::class.java)
-                        startActivity(intent)
+                        converstWeb()
                     }
 
                     val signOutBtn = findViewById<Button>(R.id.sign_out_btn)
@@ -104,4 +105,10 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private fun converstWeb (){
+        val url = "https://suckhoedoisong.vn"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
+    }
 }
