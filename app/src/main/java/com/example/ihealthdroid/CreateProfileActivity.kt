@@ -31,8 +31,10 @@ class CreateProfileActivity : ComponentActivity() {
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString("selectedLanguage", "en_us")
 
-        val locale = Locale(selectedLanguage)
-        Locale.setDefault(locale)
+        val locale = selectedLanguage?.let { Locale(it) }
+        if (locale != null) {
+            Locale.setDefault(locale)
+        }
 
         val resources = resources
         val configuration = resources.configuration
@@ -106,7 +108,7 @@ class CreateProfileActivity : ComponentActivity() {
                     val createProfileBtn = findViewById<Button>(R.id.btn_create_profile)
                     createProfileBtn.setOnClickListener {
 
-                        var profileCreator: String = loggedInAcc?.uid ?: ""
+                        val profileCreator: String = loggedInAcc?.uid ?: ""
 
                         val userName = nameEditField.text.toString()
                         val userDOB = dobEditField.text.toString()
@@ -141,7 +143,7 @@ class CreateProfileActivity : ComponentActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
-                            val docref = db.collection("profiles").document("$userPhone")
+                            val docref = db.collection("profiles").document(userPhone)
 
                             docref.get().addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
@@ -172,7 +174,7 @@ class CreateProfileActivity : ComponentActivity() {
                                             )
 
                                             // Add a new document with a generated ID
-                                            db.collection("profiles").document("$userPhone")
+                                            db.collection("profiles").document(userPhone)
                                                 .set(user)
                                                 .addOnSuccessListener {
                                                     Toast.makeText(

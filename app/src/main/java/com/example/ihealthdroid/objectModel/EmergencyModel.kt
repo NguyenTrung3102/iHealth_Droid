@@ -5,8 +5,8 @@ import android.os.Parcelable
 import java.io.Serializable
 
 data class EmergencyModel(
-    val district: String = "",
     val name: String = "",
+    val district: String = "",
     val phone: String = "",
 ) : Parcelable, Serializable {
     constructor(parcel: Parcel) : this(
@@ -16,8 +16,8 @@ data class EmergencyModel(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(district)
         parcel.writeString(name)
+        parcel.writeString(district)
         parcel.writeString(phone)
     }
 

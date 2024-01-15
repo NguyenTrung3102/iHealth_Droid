@@ -35,8 +35,10 @@ class CreateProfileDoctorActivity : ComponentActivity() {
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString("selectedLanguage", "en_us")
 
-        val locale = Locale(selectedLanguage)
-        Locale.setDefault(locale)
+        val locale = selectedLanguage?.let { Locale(it) }
+        if (locale != null) {
+            Locale.setDefault(locale)
+        }
 
         val resources = resources
         val configuration = resources.configuration
@@ -114,7 +116,7 @@ class CreateProfileDoctorActivity : ComponentActivity() {
                     val saveChangeDocProfile = findViewById<Button>(R.id.profile_doc_detail_save)
                     saveChangeDocProfile.setOnClickListener {
                         val loggedInAcc = FirebaseAuth.getInstance().currentUser
-                        var doctorUID: String = loggedInAcc?.uid ?: ""
+                        val doctorUID: String = loggedInAcc?.uid ?: ""
 
                         val doctorName = doctorNameView.text.toString()
 
@@ -143,7 +145,7 @@ class CreateProfileDoctorActivity : ComponentActivity() {
                                 "doctorDepartment" to selectedDepartment
                             )
 
-                            db.collection("profile-doc").document("$doctorUID")
+                            db.collection("profile-doc").document(doctorUID)
                                 .set(doctorData)
                                 .addOnSuccessListener {
                                     Log.d(ControlsProviderService.TAG, "Doctor profiles created")
@@ -153,7 +155,7 @@ class CreateProfileDoctorActivity : ComponentActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
-                                .addOnFailureListener { exception ->
+                                .addOnFailureListener {
                                     Log.d(ControlsProviderService.TAG, "Error when creating doctor profiles")
                                 }
                         }

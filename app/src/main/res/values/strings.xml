@@ -12,14 +12,16 @@
 
     <string name="app_name">iHealth</string>
 
+    <string name="credit_info">Final Project: Mobile Programming (Theory)\nHealth Care App\n\nCourse Lecturer: MSc. Nguyễn Thái Công Nghĩa\n\nTeam Member:\nHồ Hoàng Nghiệp - 20200277\nNguyễn Trung Quân - 20200319\nNguyễn Tiến Trung - 20200382</string>
+
     <string name="profile">Medical Profile</string>
     <string name="appointment">Medical Appointment</string>
-    <string name="phone">Emergency Medical Service</string>
+    <string name="phone">Emergency Service</string>
     <string name="search">Health Wiki</string>
 
     <string name="profile_menu_bar_name">Medical Profile</string>
     <string name="appointment_menu_bar_name">Pick an Appointment</string>
-    <string name="phone_emergency_menu_bar_name">Emergency Medical Service</string>
+    <string name="phone_emergency_menu_bar_name">Emergency Service</string>
     <string name="search_wiki_menu_bar_name">Health Wiki Assistant</string>
     <string name="settings_menu_bar_name">Application Settings</string>
     <string name="settings_language_switch">Language</string>
@@ -28,7 +30,7 @@
     <string name="sign_up_btn_label">Sign up</string>
     <string name="username_input_label">Email:</string>
     <string name="password_input_label">Password:</string>
-    <string name="sign_out_btn_label">Sign out</string>
+    <string name="sign_out_btn_label">Log out</string>
     <string name="create_account_btn">Create Account</string>
     <string name="password_confirm_label">Confirm Password:</string>
     <string name="toast_pwd_confirm_mismatch">Confirm password mismatch</string>
@@ -98,4 +100,11 @@
     <string name="toast_app_rejected">Appointment rejected</string>
     <string name="app_status_rejected">Rejected</string>
     <string name="app_doctor_name">Doctor:</string>
+    <string name="btn_accept">Accept</string>
+    <string name="btn_reject">Reject</string>
+    <string name="btn_get_app_doc">Search</string>
+    <string name="profile_label">Profile:</string>
+    <string name="app_version_label">App version:</string>
+
+    <string name="app_version" translatable="false"></string>
 </resources>

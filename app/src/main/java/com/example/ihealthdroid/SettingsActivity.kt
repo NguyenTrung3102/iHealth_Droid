@@ -27,8 +27,10 @@ class SettingsActivity : ComponentActivity() {
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString("selectedLanguage", "en_us")
 
-        val locale = Locale(selectedLanguage)
-        Locale.setDefault(locale)
+        val locale = selectedLanguage?.let { Locale(it) }
+        if (locale != null) {
+            Locale.setDefault(locale)
+        }
 
         val resources = resources
         val configuration = resources.configuration

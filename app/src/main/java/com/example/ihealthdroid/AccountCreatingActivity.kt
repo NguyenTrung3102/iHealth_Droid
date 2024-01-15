@@ -31,14 +31,15 @@ class AccountCreatingActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        lateinit var auth: FirebaseAuth
-        auth = Firebase.auth
+        val auth: FirebaseAuth = Firebase.auth
 
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString("selectedLanguage", "en_us")
 
-        val locale = Locale(selectedLanguage)
-        Locale.setDefault(locale)
+        val locale = selectedLanguage?.let { Locale(it) }
+        if (locale != null) {
+            Locale.setDefault(locale)
+        }
 
         val resources = resources
         val configuration = resources.configuration
@@ -120,7 +121,7 @@ class AccountCreatingActivity : ComponentActivity() {
 
                                             if (accRole == "doctor") {
                                                 val doctorCollection = db.collection("profile-doc")
-                                                val doctorDocument = doctorCollection.document(uid!!)
+                                                val doctorDocument = doctorCollection.document(uid)
 
                                                 val doctorData = hashMapOf(
                                                     "doctorName" to "",
@@ -132,7 +133,7 @@ class AccountCreatingActivity : ComponentActivity() {
                                                     .addOnSuccessListener {
                                                         Log.d(TAG, "Doctor profiles created")
                                                     }
-                                                    .addOnFailureListener { exception ->
+                                                    .addOnFailureListener {
                                                         Log.d(TAG, "Error when creating doctor profiles")
                                                     }
                                             }
@@ -157,7 +158,7 @@ class AccountCreatingActivity : ComponentActivity() {
                                                     )
                                                     startActivity(intent)
                                                 }
-                                                .addOnFailureListener { exception ->
+                                                .addOnFailureListener {
                                                     Toast.makeText(
                                                         baseContext,
                                                         context.getString(R.string.toast_auth_failed),

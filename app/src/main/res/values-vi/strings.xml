@@ -12,13 +12,15 @@
 
     <string name="app_name">iHealth</string>
 
+    <string name="credit_info">Đồ án cuối kỳ: Lập trình di động\nỨng dụng chăm sóc sức khỏe\n\nGiảng viên: ThS Nguyễn Thái Công Nghĩa\n\nThành viên nhóm:\nHồ Hoàng Nghiệp - 20200277\nNguyễn Trung Quân - 20200319\nNguyễn Tiến Trung - 20200382</string>
+
     <string name="profile">Hồ sơ y tế</string>
     <string name="appointment">Lịch khám, chữa bệnh</string>
-    <string name="phone">Gọi dịch vụ y tế khẩn cấp</string>
+    <string name="phone">Gọi dịch vụ khẩn cấp</string>
     <string name="search">Tra cứu thông tin y tế</string>
     <string name="profile_menu_bar_name">Hồ sơ y tế</string>
     <string name="appointment_menu_bar_name">Đặt lịch khám</string>
-    <string name="phone_emergency_menu_bar_name">Liên hệ trợ giúp y tế khẩn cấp</string>
+    <string name="phone_emergency_menu_bar_name">Liên hệ số khẩn cấp</string>
     <string name="search_wiki_menu_bar_name">Trợ lý thông tin y khoa</string>
     <string name="settings_menu_bar_name">Cài đặt ứng dụng</string>
     <string name="settings_language_switch">Ngôn ngữ</string>
@@ -70,7 +72,7 @@
     <string name="pick_a_profile">Chọn 1 hồ sơ:</string>
     <string name="select_profile_btn_label">Chọn</string>
     <string name="pick_a_department">Chọn 1 khoa:</string>
-    <string name="pick_a_day">Chọn 1 một ngày:</string>
+    <string name="pick_a_day">Chọn 1 ngày:</string>
     <string name="pick_a_time">Chọn giờ hẹn:</string>
     <string name="pick_a_time_option_1">Sáng (8h00 - 12h00)</string>
     <string name="pick_a_time_option_2">Chiều (13h00 - 17h00)</string>
@@ -97,4 +99,9 @@
     <string name="toast_app_rejected">Đã từ chối cuộc hẹn</string>
     <string name="app_status_rejected">Bị từ chối</string>
     <string name="app_doctor_name">Bác sĩ:</string>
+    <string name="btn_accept">Tiếp nhận</string>
+    <string name="btn_reject">Từ chối</string>
+    <string name="btn_get_app_doc">Tìm</string>
+    <string name="profile_label">Hồ sơ:</string>
+    <string name="app_version_label">Phiên bản:</string>
 </resources>

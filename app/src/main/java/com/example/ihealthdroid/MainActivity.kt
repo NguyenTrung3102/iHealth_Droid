@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.Key.Companion.I
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -29,8 +28,10 @@ class MainActivity : ComponentActivity() {
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString("selectedLanguage", "en_us")
 
-        val locale = Locale(selectedLanguage)
-        Locale.setDefault(locale)
+        val locale = selectedLanguage?.let { Locale(it) }
+        if (locale != null) {
+            Locale.setDefault(locale)
+        }
 
         val resources = resources
         val configuration = resources.configuration
@@ -92,7 +93,7 @@ class MainActivity : ComponentActivity() {
 
                     val healthWikiBtn = findViewById<ImageButton>(R.id.btn_search)
                     healthWikiBtn.setOnClickListener {
-                        converstWeb()
+                        convertWeb()
                     }
 
                     val signOutBtn = findViewById<Button>(R.id.sign_out_btn)
@@ -105,7 +106,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun converstWeb (){
+    private fun convertWeb (){
         val url = "https://suckhoedoisong.vn"
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)

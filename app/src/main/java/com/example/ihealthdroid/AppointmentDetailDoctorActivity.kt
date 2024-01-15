@@ -30,8 +30,10 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString("selectedLanguage", "en_us")
 
-        val locale = Locale(selectedLanguage)
-        Locale.setDefault(locale)
+        val locale = selectedLanguage?.let { Locale(it) }
+        if (locale != null) {
+            Locale.setDefault(locale)
+        }
 
         val resources = resources
         val configuration = resources.configuration
@@ -143,13 +145,13 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                     var doctorUID: String = loggedInAcc?.uid ?: ""
 
                     var doctorName = ""
-                    db.collection("profile-doc").document("$doctorUID")
+                    db.collection("profile-doc").document(doctorUID)
                         .get()
                         .addOnSuccessListener { document ->
                             Log.d(ControlsProviderService.TAG, "Doctor profiles created")
                             doctorName = document["doctorName"].toString()
                         }
-                        .addOnFailureListener { exception ->
+                        .addOnFailureListener {
                             Log.d(
                                 ControlsProviderService.TAG,
                                 "Error when creating doctor profiles"
@@ -177,7 +179,7 @@ class AppointmentDetailDoctorActivity : ComponentActivity() {
                             .document("${userAppDateView.text}" + "_" + "$appTime" + "_" + "${userAppPhoneView.text}")
                             .set(appData)
                             .addOnSuccessListener {
-                                Log.d(ControlsProviderService.TAG, "Appointment Accpeted")
+                                Log.d(ControlsProviderService.TAG, "Appointment Accepted")
                                 Toast.makeText(
                                     this@AppointmentDetailDoctorActivity,
                                     R.string.toast_app_accepted,

@@ -129,8 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/rounded_button"
-                android:textColor="@color/white"
-                android:text="Get" />
+                android:text="@string/btn_get_app_doc"
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </LinearLayout>

@@ -34,13 +34,13 @@ class CustomEmergencyAdapter : ListAdapter<EmergencyModel, CustomEmergencyAdapte
     }
 
     inner class EmergencyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val emergencyDistrictView: TextView = itemView.findViewById(R.id.tv_show_distric)
         private val emergencyNameView: TextView = itemView.findViewById(R.id.tv_show_name)
+        private val emergencyDistrictView: TextView = itemView.findViewById(R.id.tv_show_district)
         private val emergencyPhoneView: TextView = itemView.findViewById(R.id.tv_show_phone)
 
         fun bind(emergency: EmergencyModel) {
-            emergencyDistrictView.text = emergency.district
             emergencyNameView.text = emergency.name
+            emergencyDistrictView.text = emergency.district
             emergencyPhoneView.text = emergency.phone
         }
     }

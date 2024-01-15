@@ -50,7 +50,7 @@ class AppointmentDetailActivity : ComponentActivity() {
 
                     val backToAppListBtn = findViewById<ImageButton>(R.id.back_to_appointment_list)
                     backToAppListBtn.setOnClickListener {
-                        val intent = Intent(this@AppointmentDetailActivity, AppointmentList::class.java)
+                        val intent = Intent(this@AppointmentDetailActivity, AppointmentListActivity::class.java)
                         startActivity(intent)
                     }
 

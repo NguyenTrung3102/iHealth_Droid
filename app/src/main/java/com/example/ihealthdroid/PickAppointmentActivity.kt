@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.service.controls.ControlsProviderService
 import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
 import android.view.View
@@ -24,7 +23,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.Calendar
@@ -32,14 +30,14 @@ import java.util.Locale
 
 class PickAppointmentActivity : ComponentActivity() {
 
-    var isSpinnerInitialized = false
+    var isSpinnerInitialized = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString("selectedLanguage", "en_us")
 
-        val locale = Locale(selectedLanguage)
+        val locale = selectedLanguage?.let { Locale(it) }
         Locale.setDefault(locale)
 
         val resources = resources
@@ -358,7 +356,7 @@ class PickAppointmentActivity : ComponentActivity() {
 
                     val listButton = findViewById<ImageButton>(R.id.btn_list_appointment)
                     listButton.setOnClickListener {
-                        val intent = Intent(this@PickAppointmentActivity, AppointmentList::class.java)
+                        val intent = Intent(this@PickAppointmentActivity, AppointmentListActivity::class.java)
                         startActivity(intent)
                     }
                 }

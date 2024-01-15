@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/tv_show_distric"
+        android:id="@+id/tv_show_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
@@ -21,7 +21,7 @@
 
 
     <TextView
-        android:id="@+id/tv_show_name"
+        android:id="@+id/tv_show_district"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"

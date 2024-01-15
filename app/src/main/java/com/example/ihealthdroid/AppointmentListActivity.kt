@@ -1,17 +1,14 @@
 package com.example.ihealthdroid
 
-import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.service.controls.ControlsProviderService
-import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,10 +22,9 @@ import com.example.ihealthdroid.adapter.AppointmentAdapter
 import com.example.ihealthdroid.objectModel.AppointmentModel
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.Calendar
 import java.util.Locale
 
-class AppointmentList : ComponentActivity() {
+class AppointmentListActivity : ComponentActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AppointmentAdapter
@@ -38,8 +34,10 @@ class AppointmentList : ComponentActivity() {
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val selectedLanguage = sharedPreferences.getString("selectedLanguage", "en_us")
 
-        val locale = Locale(selectedLanguage)
-        Locale.setDefault(locale)
+        val locale = selectedLanguage?.let { Locale(it) }
+        if (locale != null) {
+            Locale.setDefault(locale)
+        }
 
         val resources = resources
         val configuration = resources.configuration
@@ -61,7 +59,7 @@ class AppointmentList : ComponentActivity() {
 
                     val backToAppointBtn = findViewById<ImageButton>(R.id.back_to_appointment)
                     backToAppointBtn.setOnClickListener {
-                        val intent = Intent(this@AppointmentList, PickAppointmentActivity::class.java)
+                        val intent = Intent(this@AppointmentListActivity, PickAppointmentActivity::class.java)
                         startActivity(intent)
                     }
 
@@ -117,7 +115,7 @@ class AppointmentList : ComponentActivity() {
 
                         if (appSearchPhone.isNullOrEmpty()) {
                             Toast.makeText(
-                                this@AppointmentList,
+                                this@AppointmentListActivity,
                                 R.string.toast_empty_field,
                                 Toast.LENGTH_SHORT
                             ).show()
@@ -133,7 +131,7 @@ class AppointmentList : ComponentActivity() {
         }
     }
     private fun showAppointmentDetail(appointment: AppointmentModel) {
-        val intent = Intent(this@AppointmentList, AppointmentDetailActivity::class.java)
+        val intent = Intent(this@AppointmentListActivity, AppointmentDetailActivity::class.java)
         intent.putExtra("appointment", appointment as Parcelable)
         startActivity(intent)
     }

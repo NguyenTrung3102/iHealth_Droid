@@ -264,27 +264,27 @@
                 android:id="@+id/btn_accept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/border_background"
-                android:textColor="#00FF47"
-                android:textStyle="bold"
-                android:textSize="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Accept" />
+                android:layout_weight="1"
+                android:background="@drawable/border_background"
+                android:text="@string/btn_accept"
+                android:textColor="#00FF47"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn_reject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/border_background"
-                android:textColor="#FF1400"
-                android:textStyle="bold"
-                android:textSize="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Reject" />
+                android:layout_weight="1"
+                android:background="@drawable/border_background"
+                android:text="@string/btn_reject"
+                android:textColor="#FF1400"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
