@@ -1,20 +1,14 @@
-package com.example.ihealthdroid
+package com.example.ihealthdroid.activity
 
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.service.controls.ControlsProviderService
 import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.RadioGroup
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -23,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.ihealthdroid.R
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore

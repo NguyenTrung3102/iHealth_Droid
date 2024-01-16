@@ -1,10 +1,9 @@
-package com.example.ihealthdroid
+package com.example.ihealthdroid.activity
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Parcelable
 import android.service.controls.ControlsProviderService
 import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
@@ -17,11 +16,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ihealthdroid.R
 import com.example.ihealthdroid.adapter.CustomEmergencyAdapter
 import com.example.ihealthdroid.objectModel.EmergencyModel
-import com.example.ihealthdroid.objectModel.ProfileModel
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 

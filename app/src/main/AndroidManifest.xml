@@ -13,73 +13,73 @@
         android:theme="@style/Theme.IHealthDroid"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".MedicalProfileActivity"
+            android:name=".activity.MedicalProfileActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".PickAppointmentActivity"
+            android:name=".activity.PickAppointmentActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".EmergencyActivity"
+            android:name=".activity.EmergencyActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".HealthWikiActivity"
+            android:name=".activity.HealthWikiActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".CreateProfileActivity"
+            android:name=".activity.CreateProfileActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".ProfileDetailActivity"
+            android:name=".activity.ProfileDetailActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".AppointmentListActivity"
+            android:name=".activity.AppointmentListActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".AppointmentDetailActivity"
+            android:name=".activity.AppointmentDetailActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".CreateProfileDoctorActivity"
+            android:name=".activity.CreateProfileDoctorActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".ProfileDetailDoctorActivity"
+            android:name=".activity.ProfileDetailDoctorActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".ProfileDetailEditActivity"
+            android:name=".activity.ProfileDetailEditActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".AccountSignInActivity"
+            android:name=".activity.AccountSignInActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
             <intent-filter>
@@ -89,17 +89,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AccountCreatingActivity"
+            android:name=".activity.AccountCreatingActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".MainDoctorActivity"
+            android:name=".activity.MainDoctorActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>
         <activity
-            android:name=".AppointmentDetailDoctorActivity"
+            android:name=".activity.AppointmentDetailDoctorActivity"
+            android:exported="true"
+            android:theme="@style/Theme.IHealthDroid">
+        </activity>
+        <activity
+            android:name=".activity.AccountInformationActivity"
             android:exported="true"
             android:theme="@style/Theme.IHealthDroid">
         </activity>

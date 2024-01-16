@@ -1,4 +1,4 @@
-package com.example.ihealthdroid
+package com.example.ihealthdroid.activity
 
 import android.content.Context
 import android.content.Intent
@@ -18,6 +18,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ihealthdroid.R
 import com.example.ihealthdroid.adapter.CustomProfileAdapter
 import com.example.ihealthdroid.objectModel.ProfileModel
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme

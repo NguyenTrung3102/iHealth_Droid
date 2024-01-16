@@ -1,4 +1,4 @@
-package com.example.ihealthdroid
+package com.example.ihealthdroid.activity
 
 import android.content.Context
 import android.content.Intent
@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.ihealthdroid.R
 import com.example.ihealthdroid.objectModel.AppointmentModel
 import com.example.ihealthdroid.ui.theme.IHealthDroidTheme
 import com.google.firebase.auth.FirebaseAuth

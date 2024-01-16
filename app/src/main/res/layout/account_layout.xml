@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/img_lcd"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back_to_menu"
+            style="@android:style/Widget.DeviceDefault.ImageButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_back"
+            android:layout_gravity="center"
+            android:layout_weight="0.05" />
+
+        <TextView
+            android:id="@+id/layout_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Account Information"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border1_background">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="center"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="TextView" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_rule"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="start"
+        android:textStyle="italic"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/nav_bar"
+        android:background="@color/invisible"
+        android:text="@string/usage_rules"/>
+
+    <Button
+        android:id="@+id/btn_policy"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="start"
+        android:textStyle="italic"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/nav_bar"
+        android:background="@color/invisible"
+        android:text="@string/privacy_policy"/>
+
+    <Button
+        android:id="@+id/btn_term"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="start"
+        android:textStyle="italic"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/nav_bar"
+        android:background="@color/invisible"
+        android:text="@string/terms_of_service"/>
+
+    <Button
+        android:id="@+id/btn_cskh"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="start"
+        android:textStyle="italic"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/nav_bar"
+        android:background="@color/invisible"
+        android:text="@string/customer_hotline"/>
+</LinearLayout>
